@@ -60,9 +60,8 @@ export const NAV_ITEMS = [
   { to: '/emprunts', label: 'Emprunts', icon: 'northEast' },
   { to: '/retours', label: 'Retours', icon: 'southWest' },
   { to: '/reservations', label: 'Réservations', icon: 'bookmark' },
-  { to: '/utilisateurs', label: 'Utilisateurs', icon: 'users' },
-  { to: '/rapports', label: 'Rapports & Stats', icon: 'chart' },
-  { to: '/admin', label: 'Administration', icon: 'settings' },
+  { to: '/utilisateurs', label: 'Utilisateurs', icon: 'users', adminOnly: true },
+  { to: '/rapports', label: 'Rapports & Stats', icon: 'chart', adminOnly: true },
   { to: '/parametres', label: 'Paramètres', icon: 'settings' },
 ]
 

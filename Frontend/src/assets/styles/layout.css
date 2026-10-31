@@ -554,6 +554,29 @@
   position: relative;
 }
 
+.user-menu-wrap {
+  position: relative;
+}
+
+.user-menu-popover {
+  width: 220px;
+}
+
+.user-menu__head {
+  padding: 12px 14px 10px;
+}
+
+.user-menu__list {
+  padding: 8px;
+}
+
+.user-menu__item {
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 12px;
+}
+
 .navbar__popover {
   position: absolute;
   top: calc(100% + 12px);
@@ -605,6 +628,24 @@
 
 .popover__item:hover {
   background: rgba(66, 189, 235, 0.07);
+}
+
+.user-menu__logout {
+  color: var(--danger);
+}
+
+.user-menu__logout:hover {
+  background: rgba(255, 75, 114, 0.08);
+}
+
+.user-menu__logout .popover__item-title,
+.user-menu__logout .popover__item-text {
+  color: var(--danger);
+}
+
+.user-menu__logout .popover__item-icon {
+  background: rgba(255, 75, 114, 0.12);
+  color: var(--danger);
 }
 
 .popover__item-icon {
@@ -848,6 +889,7 @@
 }
 
 @media (max-width: 1180px) {
+
   .grid-7-5,
   .grid-8-4 {
     grid-template-columns: 1fr;

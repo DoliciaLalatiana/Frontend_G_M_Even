@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   Boxes,
@@ -12,63 +12,42 @@ import {
   RadioTower,
   ShieldCheck,
   Sparkles,
-} from 'lucide-react'
-import { useAuth } from '../context/AuthContext'
-import { APP_VERSION } from '../utils/constants'
-
-const DEMO_ACCOUNTS = [
-  {
-    label: 'Administrateur',
-    email: 'alexandre.mercier@eventmanager.fr',
-    password: 'admin123',
-    hint: 'Accès complet + console admin',
-  },
-  {
-    label: 'Régisseur',
-    email: 'thomas.laroche@eventmanager.fr',
-    password: 'demo1234',
-    hint: 'Accès opérationnel sans administration',
-  },
-]
+} from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { APP_VERSION } from "../utils/constants";
 
 const Login = () => {
-  const { isAuthenticated, signIn } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState('')
+  const { isAuthenticated, signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
-  const from = location.state?.from || '/dashboard'
+  const from = location.state?.from || "/dashboard";
 
   if (isAuthenticated) {
-    return <Navigate to={from} replace />
-  }
-
-  const useDemoAccount = (account) => {
-    setEmail(account.email)
-    setPassword(account.password)
-    setError('')
+    return <Navigate to={from} replace />;
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    setError('')
+    event.preventDefault();
+    setError("");
 
     if (!email.trim() || !password) {
-      setError('Renseignez votre adresse e-mail et votre mot de passe.')
-      return
+      setError("Renseignez votre adresse e-mail et votre mot de passe.");
+      return;
     }
 
-    const result = signIn({ email, password })
+    const result = signIn({ email, password });
     if (!result.ok) {
-      setError(result.message)
-      return
+      setError(result.message);
+      return;
     }
 
-    navigate(from, { replace: true })
-  }
+    navigate(from, { replace: true });
+  };
 
   return (
     <div className="auth-page">
@@ -100,8 +79,8 @@ const Login = () => {
             </span>
             <h1>Le parc matériel sous contrôle, du dépôt au plateau.</h1>
             <p>
-              Centralisez l'inventaire, les emprunts, les retours et les accès équipe dans une
-              console unique conçue pour les régies exigeantes.
+              Centralisez l'inventaire, les emprunts, les retours et les accès
+              équipe dans une console unique conçue pour les régies exigeantes.
             </p>
 
             <div className="auth-features">
@@ -120,7 +99,9 @@ const Login = () => {
                 </span>
                 <div>
                   <strong>Accès par rôle</strong>
-                  <span>Habilitations et console d'administration dédiées.</span>
+                  <span>
+                    Habilitations et console d'administration dédiées.
+                  </span>
                 </div>
               </div>
               <div className="auth-feature">
@@ -129,7 +110,9 @@ const Login = () => {
                 </span>
                 <div>
                   <strong>Traçabilité complète</strong>
-                  <span>Bons, incidents et exports archivés au même endroit.</span>
+                  <span>
+                    Bons, incidents et exports archivés au même endroit.
+                  </span>
                 </div>
               </div>
             </div>
@@ -148,7 +131,10 @@ const Login = () => {
             </div>
             <span className="auth-panel__eyebrow">Accès sécurisé</span>
             <h2>Connexion à la console</h2>
-            <p>Utilisez votre compte opérationnel pour reprendre la gestion du parc.</p>
+            <p>
+              Utilisez votre compte opérationnel pour reprendre la gestion du
+              parc.
+            </p>
           </div>
 
           <form className="auth-form" onSubmit={handleSubmit}>
@@ -174,7 +160,7 @@ const Login = () => {
                 <LockKeyhole size={14} />
                 <input
                   id="login-password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   placeholder="••••••••"
                   value={password}
@@ -184,8 +170,16 @@ const Login = () => {
                   type="button"
                   className="auth-input__toggle"
                   onClick={() => setShowPassword((current) => !current)}
-                  aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
-                  title={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
+                  aria-label={
+                    showPassword
+                      ? "Masquer le mot de passe"
+                      : "Afficher le mot de passe"
+                  }
+                  title={
+                    showPassword
+                      ? "Masquer le mot de passe"
+                      : "Afficher le mot de passe"
+                  }
                 >
                   {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                 </button>
@@ -198,41 +192,18 @@ const Login = () => {
               </div>
             )}
 
-            <button type="submit" className="btn btn-primary btn-block auth-submit">
+            <button
+              type="submit"
+              className="btn btn-primary btn-block auth-submit"
+            >
               Se connecter
               <ArrowRight size={15} />
             </button>
           </form>
-
-          <div className="auth-demo">
-            <div className="auth-demo__head">
-              <span>Comptes de démonstration</span>
-              <span className="badge badge--cyan">Local</span>
-            </div>
-            <div className="auth-demo__grid">
-              {DEMO_ACCOUNTS.map((account) => (
-                <button
-                  type="button"
-                  className="auth-demo__card"
-                  key={account.label}
-                  onClick={() => useDemoAccount(account)}
-                >
-                  <strong>{account.label}</strong>
-                  <span>{account.hint}</span>
-                  <code>{account.password}</code>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <p className="auth-panel__note">
-            Authentification locale de démonstration. Les comptes proviennent du registre
-            Utilisateurs ; les comptes inactifs ou suspendus sont refusés.
-          </p>
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
