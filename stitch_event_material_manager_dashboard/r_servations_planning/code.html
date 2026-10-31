@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#2d344b","tertiary-fixed-dim":"#69d3ff","primary-fixed":"#eaddff","on-tertiary":"#003546","on-secondary-container":"#00545a","tertiary-container":"#00789a","on-tertiary-container":"#e6f5ff","surface-container-low":"#141a31","on-secondary":"#00363b","surface-container":"#181f35","error":"#ffb4ab","error-container":"#93000a","primary-container":"#8054d8","surface-tint":"#d2bcff","primary-fixed-dim":"#d2bcff","outline-variant":"#4a4453","primary":"#d2bcff","on-primary-container":"#f9f1ff","surface-container-high":"#222940","outline":"#958e9f","secondary-container":"#00cfde","inverse-on-surface":"#292f47","inverse-primary":"#6f41c6","on-background":"#dce1ff","tertiary-fixed":"#bee9ff","surface-container-highest":"#2d344b","on-surface-variant":"#ccc3d5","secondary":"#48ebfb","on-primary":"#3e008e","on-secondary-fixed-variant":"#004f55","surface-container-lowest":"#060d23","on-tertiary-fixed":"#001f2a","on-secondary-fixed":"#002023","on-error-container":"#ffdad6","background":"#0b1228","surface-bright":"#323850","tertiary":"#69d3ff","inverse-surface":"#dce1ff","on-primary-fixed":"#25005a","surface-dim":"#0b1228","secondary-fixed":"#84f3ff","surface":"#0b1228","on-surface":"#dce1ff","on-error":"#690005","on-tertiary-fixed-variant":"#004d64","on-primary-fixed-variant":"#5624ac","secondary-fixed-dim":"#2adae9"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"2rem",gutter:"1.25rem","margin-mobile":"1rem","space-xl":"2.25rem","gutter-mobile":"0.75rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem"},fontFamily:{"label-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"mono-code":["JetBrains Mono"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"label-lg":["13px",{lineHeight:"18px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-xl-mobile":["26px",{lineHeight:"34px",fontWeight:"700"}],"label-md":["11px",{lineHeight:"16px",fontWeight:"600"}],"body-md":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"mono-code":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface min-h-screen relative selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute -top-40 left-20 w-[540px] h-[540px] bg-primary-container/15 rounded-full blur-[128px]"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-secondary-container/10 rounded-full blur-[140px]"></div><div class="absolute bottom-10 right-10 w-[600px] h-[600px] bg-tertiary-container/15 rounded-full blur-[160px]"></div></div><aside class="fixed left-0 top-0 h-full w-64 z-50 flex flex-col bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0_8px_32px_0_rgba(4,9,24,0.37)]"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/15"><div class="flex items-center gap-space-sm"><img alt="EVENT MANAGER Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uw0uOlIN49xmd4rT6ZeArRc6TD1wLEhzrKzV4mwbRyVpiHqpJIkSoGDomc5BJFNOdtViL83_WD-LYiqET9R5hcpxE4v6DZQDG1BH8wG784vrelhCGJPPtPIW9ohHJiqFh7keCRdi-jgX1MuzMJ3slC3I66VvFIdv5rXZBnA3-PQ_uPlWXXYHOzjHMWiLRQFqktiO5MNyluQ0tF7Bwhxnjh5naELg4t8mSkYh-R9awxWQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface leading-none">EVENT MANAGER</span><span class="font-label-md text-label-md text-secondary tracking-widest uppercase mt-0.5">Logistics Core</span></div></div><div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#48ebfb]"></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-1.5 rounded-lg bg-surface-container/60 border border-outline-variant/20 flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Parc Opérationnel</span><span class="font-mono-code text-mono-code text-secondary font-bold">PROD-FR01</span></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-[0_0_16px_rgba(128,84,216,0.35)]"><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Tableau de bord</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="materiels" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Matériels</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span class="font-body-md text-body-md">Catégories</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="evenements" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-body-md text-body-md">Événements</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="emprunts" href="#"><span class="material-symbols-outlined text-[20px]">north_east</span><span class="font-body-md text-body-md">Emprunts</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="retours" href="#"><span class="material-symbols-outlined text-[20px]">south_west</span><span class="font-body-md text-body-md">Retours</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reservations" href="#"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="font-body-md text-body-md">Réservations</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="utilisateurs" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Utilisateurs</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rapports-stats" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Rapports &amp; Stats</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Paramètres</span></a></nav><div class="p-space-md border-t border-outline-variant/15"><div class="rounded-xl p-space-sm bg-surface-container-high/40 border border-outline-variant/20 flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">cell_tower</span><span class="font-label-md text-label-md text-on-surface-variant">Nœud Télémétrie</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-mono-code text-[10px] bg-secondary/15 text-secondary border border-secondary/30">EN LIGNE</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen relative z-10"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/20 z-40 px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface transition-colors cursor-pointer">Hub</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-secondary font-semibold">Inventaire Événementiel</span></div></div><div class="flex-1 max-w-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-14 py-1.5 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/40 transition-all" placeholder="Rechercher réf, QR, kit, salle, technicien..." type="text"/><kbd class="absolute right-2.5 px-1.5 py-0.5 rounded font-mono-code text-[10px] bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">⌘K</kbd></div></div><div class="flex items-center gap-space-md shrink-0"><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary border border-primary/30 text-on-primary-container font-label-lg text-label-lg shadow-[0_0_14px_rgba(128,84,216,0.35)] hover:shadow-[0_0_20px_rgba(72,235,251,0.45)] hover:border-secondary/60 transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Action rapide</span></button><button aria-label="Notifications" class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/60 transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-surface-container-lowest shadow-[0_0_8px_#48ebfb]"></span></button><div class="h-8 w-px bg-outline-variant/20"></div><div class="flex items-center gap-space-sm pl-1"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3M13MZ36D9d7Qt7bwqsHbydkPhuohHUtBzeGGx4ZjnhHTjwBs8uVpZrexZE3uSq7soA9CUQSKS1FyzZnqrNnUmWQb16oEkVJeJiq6FZFkVZz6L2baXC5Az1J8on2M27xVTpqmE9dadMskB_rDyLv-YN9ZFBxOeeOjnjrlM-ROHyD5qdarEnIdEcqlioJP-zZ4iAUknhVDlFkdc3RMm7gI0d-Yq5IJnMWJGOljXCW"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary ring-1 ring-background"></span></div><div class="flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface leading-tight">Alexandre Mercier</span><div class="flex items-center gap-1"><span class="font-label-md text-label-md text-secondary font-medium">Régisseur Général</span><span class="inline-flex px-1 rounded font-mono-code text-[9px] bg-primary-container/25 text-primary border border-primary/30 uppercase">Admin</span></div></div></div></div></header><main class="relative pt-16 w-full flex-1 px-gutter py-margin bg-transparent"><div class="flex flex-col w-full space-y-gutter">
+<!-- Entête de Page & Commandes Globales -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md bg-surface-container/60 backdrop-blur-xl p-space-lg rounded-xl shadow-lg relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 bottom-0 w-60 h-60 bg-secondary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col space-y-space-xs relative z-10">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span>Hub</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Inventaire Événementiel</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-secondary font-semibold">Réservations</span>
+</div>
+<div class="inline-flex items-center gap-2 mt-1 self-start px-2.5 py-1 rounded-full bg-secondary-container/15 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_#48ebfb]"></span>
+<span class="font-mono-code text-[11px] tracking-wider uppercase">PLANIFICATION GLOBALE • DISPONIBILITÉ FLOTTE</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight mt-1">Gestion des Réservations &amp; Planning</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Calendrier interactif des disponibilités matérielles, réservations prévisionnelles et affectations de kits scéniques.
+      </p>
+</div>
+<!-- Actions globales -->
+<div class="flex flex-wrap items-center gap-space-sm relative z-10 shrink-0">
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-xl bg-surface-container-high/80 text-on-surface hover:bg-surface-container-highest transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">file_download</span>
+<span class="font-label-lg text-label-lg">Exporter (PDF/ICS)</span>
+</button>
+<button class="relative inline-flex items-center gap-2 px-space-md py-2 rounded-xl bg-surface-container-high/60 text-secondary hover:bg-surface-variant/70 transition-all shadow-sm" id="btn-conflicts-toggle" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span class="font-label-lg text-label-lg">Vue Conflits &amp; Tensions</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full font-mono-code text-[10px] bg-error-container text-error">2</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container shadow-[0_0_20px_rgba(128,84,216,0.4)] hover:shadow-[0_0_28px_rgba(72,235,251,0.5)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="font-label-lg text-label-lg font-bold">+ Nouvelle Réservation</span>
+</button>
+</div>
+</div>
+<!-- Bandeau KPI Statistiques (4 Cartes Glassmorphism) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- KPI 1 -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high/70 transition-all">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-full blur-xl pointer-events-none group-hover:bg-primary-container/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Réservations Confirmées</span>
+<span class="p-2 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">28</span>
+<span class="font-mono-code text-mono-code text-secondary font-medium">dossiers</span>
+</div>
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="inline-flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+          100% sécurisés
+        </span>
+<span class="text-on-surface-variant/70 font-mono-code text-[11px]">S21-S26</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high/70 transition-all">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/10 rounded-full blur-xl pointer-events-none group-hover:bg-tertiary-container/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Options en Attente</span>
+<span class="p-2 rounded-lg bg-tertiary-container/20 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">6</span>
+<span class="font-mono-code text-mono-code text-tertiary font-medium">devis</span>
+</div>
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Validation sous 48h</span>
+<span class="font-mono-code text-[11px] text-tertiary">37 400 € HT</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high/70 transition-all">
+<div class="absolute top-0 right-0 w-28 h-28 bg-error-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-error uppercase tracking-wider">Conflits de Stock</span>
+<span class="p-2 rounded-lg bg-error-container/30 text-error">
+<span class="material-symbols-outlined text-[20px]">error_outline</span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-error">2</span>
+<span class="font-mono-code text-mono-code text-error/90 font-medium">tensions détectées</span>
+</div>
+<div class="flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span class="truncate max-w-[200px]" title="Lyres 500W &amp; Consoles audio">Lyres 500W &amp; Consoles</span>
+<span class="font-mono-code text-[11px] text-error">24-26 Mai</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high/70 transition-all">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/10 rounded-full blur-xl pointer-events-none group-hover:bg-secondary-container/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Taux d'Engagement (30j)</span>
+<span class="p-2 rounded-lg bg-secondary-container/20 text-secondary">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">88.4%</span>
+<span class="font-mono-code text-[11px] text-secondary">Pic estival</span>
+</div>
+<!-- Mini Sparkline SVG -->
+<svg class="w-16 h-8 text-secondary overflow-visible" fill="none" viewbox="0 0 60 24">
+<path d="M0 20 L10 18 L20 12 L30 14 L40 6 L50 9 L60 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 88.4%"></div>
+</div>
+</div>
+</div>
+<!-- Vue Interactive : Calendrier / Gantt & Planning des Disponibilités -->
+<div class="bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md lg:p-space-lg shadow-md flex flex-col space-y-space-md">
+<!-- Barre de Contrôles & Filtres du Planning -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm pb-space-sm">
+<!-- Vue Temporelle Nav -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-lowest/80 rounded-xl p-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-3 font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Mai 2025</span>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<button class="px-3 py-1.5 rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">
+          Aujourd'hui
+        </button>
+</div>
+<!-- Mode de visualisations (Mois / Semaine / Gantt) -->
+<div class="flex items-center gap-1 bg-surface-container-lowest/80 p-1 rounded-xl self-start lg:self-auto">
+<button class="px-3 py-1 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" type="button">Mois</button>
+<button class="px-3 py-1 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" type="button">Semaine</button>
+<button class="px-3 py-1 rounded-lg text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" type="button">Grille Jour</button>
+<button class="px-3 py-1 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_0_12px_rgba(128,84,216,0.4)]" type="button">Gantt Matériels</button>
+</div>
+<!-- Sélecteur Filtres par Métier -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high text-secondary font-label-md text-label-md shrink-0" type="button">Tous (44)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest/50 text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0" type="button">Audio (18)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest/50 text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0" type="button">Lumière (14)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest/50 text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0" type="button">Vidéo LED (8)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest/50 text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0" type="button">Structure Truss (4)</button>
+</div>
+</div>
+<!-- Timeline Gantt Interactif -->
+<div class="w-full overflow-x-auto rounded-xl bg-surface-container-lowest/60 p-space-sm">
+<div class="min-w-[900px]">
+<!-- Timeline Header : Jours du mois -->
+<div class="grid grid-cols-12 gap-1 pb-3 text-center font-mono-code text-[11px] text-on-surface-variant/80 border-b border-surface-container-high/40">
+<div class="col-span-3 text-left pl-2 font-label-md text-label-md text-on-surface">Kits &amp; Parc Flotte</div>
+<div>16-18 Mai</div>
+<div>19-21 Mai</div>
+<div>22-24 Mai</div>
+<div class="text-secondary font-bold">25-27 Mai</div>
+<div>28-30 Mai</div>
+<div>31 Mai-02 J</div>
+<div>03-06 Juin</div>
+<div>07-10 Juin</div>
+<div>11-15 Juin</div>
+</div>
+<!-- Ligne Gantt 1 : Pack Son L-Acoustics K2 -->
+<div class="grid grid-cols-12 gap-1 py-3 items-center hover:bg-surface-container-high/20 rounded-lg transition-colors">
+<div class="col-span-3 pl-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Système L-Acoustics K2</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">KIT-SON-8802 • Lyon</span>
+</div>
+</div>
+<!-- Barres de statut -->
+<div class="col-span-9 relative h-10 flex items-center">
+<!-- Nuits Sonores -->
+<div class="absolute left-[8%] w-[26%] h-8 rounded-lg bg-gradient-to-r from-primary-container via-inverse-primary to-primary-container text-on-primary-container p-2 flex items-center justify-between shadow-[0_0_14px_rgba(128,84,216,0.35)] cursor-pointer hover:brightness-110 transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-secondary">graphic_eq</span>
+<span class="font-label-md text-label-md truncate">Festival Nuits Sonores (Lyon)</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[9px] font-mono-code bg-surface-container-lowest/40 uppercase">CONFIRMÉ</span>
+</div>
+</div>
+</div>
+<!-- Ligne Gantt 2 : Parc Lumière / Robe Megapointes (Conflit Détecté) -->
+<div class="grid grid-cols-12 gap-1 py-3 items-center bg-error-container/10 rounded-lg transition-colors">
+<div class="col-span-3 pl-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-error truncate font-bold">24x Robe Megapointe 500W</span>
+<span class="font-mono-code text-[10px] text-error/80">KIT-LGT-4410 • Paris Hub</span>
+</div>
+</div>
+<div class="col-span-9 relative h-10 flex items-center">
+<!-- Gala VivaTech Conflit -->
+<div class="absolute left-[30%] w-[28%] h-8 rounded-lg bg-surface-container-highest/90 text-on-surface p-2 flex items-center justify-between shadow-[0_0_16px_rgba(255,180,171,0.25)] cursor-pointer hover:brightness-110">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-error">warning</span>
+<span class="font-label-md text-label-md truncate text-error font-bold">Gala VivaTech Paris</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[9px] font-mono-code bg-error text-on-error font-bold uppercase">CONFLIT STOCK</span>
+</div>
+</div>
+</div>
+<!-- Ligne Gantt 3 : Écrans LED Absen P2.5 -->
+<div class="grid grid-cols-12 gap-1 py-3 items-center hover:bg-surface-container-high/20 rounded-lg transition-colors">
+<div class="col-span-3 pl-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Écrans LED Absen P2.5 (36m²)</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">KIT-VID-0914 • Transit</span>
+</div>
+</div>
+<div class="col-span-9 relative h-10 flex items-center">
+<!-- Salon Auto Genève -->
+<div class="absolute left-[44%] w-[26%] h-8 rounded-lg bg-tertiary-container/30 text-on-tertiary-container p-2 flex items-center justify-between backdrop-blur-md cursor-pointer hover:brightness-110 transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-tertiary">tv</span>
+<span class="font-label-md text-label-md truncate">Salon Auto Genève</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[9px] font-mono-code bg-surface-container-lowest/50 text-tertiary uppercase">OPTION</span>
+</div>
+</div>
+</div>
+<!-- Ligne Gantt 4 : Semi-Tournée Européenne Phoenix (Truss + Backline) -->
+<div class="grid grid-cols-12 gap-1 py-3 items-center hover:bg-surface-container-high/20 rounded-lg transition-colors">
+<div class="col-span-3 pl-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Kit Global Truss &amp; FOH Rig</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">TRUSS-PRO-200 • Hangar A</span>
+</div>
+</div>
+<div class="col-span-9 relative h-10 flex items-center">
+<!-- Phoenix Tour -->
+<div class="absolute left-[54%] w-[44%] h-8 rounded-lg bg-gradient-to-r from-secondary-container/40 to-primary-container/40 text-on-surface p-2 flex items-center justify-between backdrop-blur-md shadow-[0_0_14px_rgba(72,235,251,0.2)] cursor-pointer hover:brightness-110 transition-all">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-secondary">tour</span>
+<span class="font-label-md text-label-md truncate font-semibold">Tournée Européenne Phoenix (Arena Tour)</span>
+</div>
+<span class="px-1.5 py-0.5 rounded text-[9px] font-mono-code bg-secondary/20 text-secondary uppercase font-bold">CONFIRMÉ (LONG TERM)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Légende Rapide Timeline -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-2 text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-space-md">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span> Confirmé / Sécurisé
+        </span>
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span> Option Client (48h)
+        </span>
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span> Alerte Conflit de Stock
+        </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+<span>Double-clic sur un bloc pour ouvrir la fiche de régie technique.</span>
+</div>
+</div>
+</div>
+<!-- Grille 2 Colonnes : Manifeste Réservations Récentes + Détail Conflit Actif -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Tableau Manifeste Réservations (8 Cols) -->
+<div class="lg:col-span-8 bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-md flex flex-col space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Registre des Réservations Planifiées</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Suivi en direct des départs, garanties de caution et attributions de parcs.</p>
+</div>
+<div class="flex items-center gap-2">
+<input class="px-3 py-1.5 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-on-surface-variant/50 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary/40 w-44" placeholder="Filtrer réf ou client..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-high/40 text-on-surface-variant font-label-md text-label-md border-b border-surface-container-high/60">
+<th class="py-2.5 px-3">Réf &amp; Client</th>
+<th class="py-2.5 px-3">Dates &amp; Lieu</th>
+<th class="py-2.5 px-3">Matériels Clés</th>
+<th class="py-2.5 px-3">Régisseur</th>
+<th class="py-2.5 px-3">Statut</th>
+<th class="py-2.5 px-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/30 font-body-md text-body-md">
+<!-- Ligne 1 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3">
+<div class="font-mono-code text-[11px] text-secondary font-bold">RES-2025-0891</div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Festival Nuits Sonores</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/70">Arty Farty Association</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">18 Mai → 22 Mai</div>
+<span class="inline-flex px-1.5 py-0.2 rounded font-mono-code text-[10px] bg-surface-container-highest text-on-surface-variant">5 Jours • Lyon Confluence</span>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">Line Array K2 + Subs KS28</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Console DiGiCo Quantum 338</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-label-md text-label-md text-on-surface">Mathieu Valet</div>
+<span class="font-mono-code text-[10px] text-tertiary">Chef Électro</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono-code bg-secondary-container/15 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Confirmé
+                </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors" title="Consulter bon" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" title="Modifier" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 2 : Conflit -->
+<tr class="bg-error-container/5 hover:bg-error-container/10 transition-colors">
+<td class="py-3 px-3">
+<div class="font-mono-code text-[11px] text-error font-bold">RES-2025-0894</div>
+<div class="font-label-lg text-label-lg text-error font-semibold">Gala VivaTech 2025</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/70">Publicis Live Europe</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">24 Mai → 27 Mai</div>
+<span class="inline-flex px-1.5 py-0.2 rounded font-mono-code text-[10px] bg-error-container/20 text-error">4 Jours • Paris Expo</span>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">24x Megapointes + Regie 4K</div>
+<div class="font-label-md text-label-md text-error">Rupture stock Lyres (-6 unités)</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-label-md text-label-md text-on-surface">Camille Dupont</div>
+<span class="font-mono-code text-[10px] text-on-surface-variant">Régisseur Général</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono-code bg-error-container/20 text-error">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                  Conflit Partiel
+                </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="p-1 rounded-lg text-error hover:bg-error-container/30 transition-colors" title="Arbitrer conflit" type="button">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 3 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3">
+<div class="font-mono-code text-[11px] text-tertiary font-bold">RES-2025-0902</div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Salon de l'Auto Suisse</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/70">Palexpo Genève Events</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">28 Mai → 02 Juin</div>
+<span class="inline-flex px-1.5 py-0.2 rounded font-mono-code text-[10px] bg-surface-container-highest text-on-surface-variant">6 Jours • Palexpo Halle 4</span>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">Mur LED Absen P2.5 (36m²)</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Processeurs Brompton SX40</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-label-md text-label-md text-on-surface">Marc Lindemann</div>
+<span class="font-mono-code text-[10px] text-tertiary">Ingénieur Vidéo</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono-code bg-tertiary-container/20 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Option Devis
+                </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 4 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3 px-3">
+<div class="font-mono-code text-[11px] text-secondary font-bold">RES-2025-0847</div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Tournée Phoenix Arena</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/70">Loyola Productions</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">02 Juin → 14 Juil</div>
+<span class="inline-flex px-1.5 py-0.2 rounded font-mono-code text-[10px] bg-surface-container-highest text-on-surface-variant">42 Jours • Europe Tour</span>
+</td>
+<td class="py-3 px-3">
+<div class="font-body-sm text-body-sm text-on-surface">Full Kit Trussing + Moteurs D8+</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Backline &amp; Réseau Luminex</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-label-md text-label-md text-on-surface">David Chen</div>
+<span class="font-mono-code text-[10px] text-secondary">Directeur Technique</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono-code bg-secondary-container/15 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Caution Validée
+                </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Volet Latéral : Arbitrage de Conflit & Télémesure Parc (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-md flex flex-col space-y-space-md relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-40 h-40 bg-error-container/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">warning_amber</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Alerte Tension Matériel</h3>
+</div>
+<span class="px-2 py-0.5 rounded font-mono-code text-[10px] bg-error-container/20 text-error">PRIORITÉ HAUTE</span>
+</div>
+<!-- Fiche Conflit Détaillée -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/70 space-y-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Équipement en sur-réservation</span>
+<span class="font-mono-code text-[11px] text-secondary font-bold">24-26 Mai</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">Robe MegaPointe 500W</div>
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant pt-1">
+<span>Capacité disponible en stock :</span>
+<span class="font-mono-code text-on-surface font-bold">18 unités</span>
+</div>
+<div class="flex justify-between items-center font-body-sm text-body-sm text-error">
+<span>Total requis (2 événements) :</span>
+<span class="font-mono-code font-bold">24 unités (-6)</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full rounded-full" style="width: 133%"></div>
+</div>
+</div>
+<!-- Solutions Immédiates d'Arbitrage -->
+<div class="space-y-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Solutions Suggérées par l'IA Dispatch</span>
+<div class="p-space-sm rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-all flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">handshake</span>
+<div class="truncate">
+<div class="font-label-md text-label-md text-on-surface group-hover:text-secondary transition-colors">Sous-location externe (Dushow)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/80">6 unités dispo • +480 € HT</div>
+</div>
+</div>
+<button class="px-2 py-1 rounded bg-secondary-container/20 text-secondary font-mono-code text-[11px] shrink-0" type="button">Appliquer</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-all flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[18px]">swap_horiz</span>
+<div class="truncate">
+<div class="font-label-md text-label-md text-on-surface group-hover:text-tertiary transition-colors">Substituer par Clay Paky Mythos</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant/80">8 unités libres dans le hangar B</div>
+</div>
+</div>
+<button class="px-2 py-1 rounded bg-tertiary-container/20 text-tertiary font-mono-code text-[11px] shrink-0" type="button">Substituer</button>
+</div>
+</div>
+<!-- Jauge de Charge Semaine -->
+<div class="pt-2 border-t border-surface-container-high/40 flex flex-col space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Charge Logistique Semaine 21</span>
+<span class="text-secondary font-mono-code">94% SATURÉ</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="h-full bg-secondary rounded-sm" style="width: 45%" title="Sonorisation"></div>
+<div class="h-full bg-primary rounded-sm" style="width: 35%" title="Éclairage"></div>
+<div class="h-full bg-tertiary rounded-sm" style="width: 14%" title="Vidéo"></div>
+<div class="h-full bg-error rounded-sm animate-pulse" style="width: 6%" title="Surcapacité"></div>
+</div>
+<span class="font-mono-code text-[10px] text-on-surface-variant/60">Audio 45% • Lumière 35% • Vidéo 14% • Tension 6%</span>
+</div>
+</div>
+</div>
+<!-- Widget Interactif Bas de Page : Simulateur Rapide de Disponibilité de Kit -->
+<div class="bg-gradient-to-r from-surface-container/90 via-surface-container-high/60 to-surface-container/90 backdrop-blur-xl p-space-lg rounded-xl shadow-lg relative overflow-hidden">
+<div class="absolute -left-10 bottom-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">troubleshoot</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Simulateur Rapide de Disponibilité Flotte</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Évaluez la faisabilité d'un nouveau projet avant édition du devis client.
+        </p>
+</div>
+<!-- Formulaire Interactif Inline -->
+<div class="flex-1 max-w-4xl grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-space-sm items-center">
+<!-- Sélecteur Kit -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Kit ou Matériel Cible</label>
+<select class="px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary/50 font-body-sm" id="sim-pack">
+<option value="kara">Pack Audio L-Acoustics Kara II</option>
+<option value="robe">Kit 24x Robe Megapointe 500W</option>
+<option value="led">Écran LED Plein Air (50m²)</option>
+<option value="chamsys">Console ChamSys MagicQ MQ500</option>
+</select>
+</div>
+<!-- Date Départ -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Date de Départ</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary/50 font-body-sm" id="sim-start" type="date" value="2025-06-05"/>
+</div>
+<!-- Date Retour -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Date de Retour</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary/50 font-body-sm" id="sim-end" type="date" value="2025-06-09"/>
+</div>
+<!-- Bouton Test -->
+<div class="flex flex-col justify-end">
+<label class="hidden sm:block font-label-md text-label-md opacity-0">Action</label>
+<button class="w-full py-2 px-space-md rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-label-lg text-label-lg font-bold shadow-[0_0_16px_rgba(72,235,251,0.3)] hover:brightness-110 transition-all flex items-center justify-center gap-1.5" id="btn-simulate" type="button">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+<span>Tester</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Zone Résultat du Simulateur -->
+<div class="mt-space-md pt-space-md border-t border-surface-container-high/40 flex flex-col sm:flex-row items-center justify-between gap-space-md" id="sim-result-box">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-[18px] shadow-[0_0_14px_#48ebfb]" id="sim-indicator-dot">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold" id="sim-status-title">100% DISPONIBLE</span>
+<span class="px-2 py-0.5 rounded font-mono-code text-[10px] bg-secondary-container/20 text-secondary uppercase font-semibold" id="sim-status-badge">AUCUN CONFLIT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="sim-status-desc">
+            Le pack sélectionné est intégralement disponible sur le créneau du 05/06/2025 au 09/06/2025.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-md w-full sm:w-auto justify-end">
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface-variant">Marge de sécurité dépôt</div>
+<div class="font-mono-code text-[14px] text-secondary font-bold" id="sim-stock-qty">4 Kits complets en réserve</div>
+</div>
+<button class="px-4 py-2 rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-variant transition-colors whitespace-nowrap" type="button">
+          Créer Option Immédiate
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simulation de micro-interactions et logique de disponibilité
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnSimulate = document.getElementById('btn-simulate');
+    const simPack = document.getElementById('sim-pack');
+    const simIndicatorDot = document.getElementById('sim-indicator-dot');
+    const simStatusTitle = document.getElementById('sim-status-title');
+    const simStatusBadge = document.getElementById('sim-status-badge');
+    const simStatusDesc = document.getElementById('sim-status-desc');
+    const simStockQty = document.getElementById('sim-stock-qty');
+    const btnConflictsToggle = document.getElementById('btn-conflicts-toggle');
+
+    if (btnSimulate) {
+      btnSimulate.addEventListener('click', () => {
+        const val = simPack.value;
+        if (val === 'robe') {
+          // Cas de conflit / tension
+          simIndicatorDot.className = 'w-10 h-10 rounded-xl bg-error-container/30 text-error flex items-center justify-center font-bold text-[18px] shadow-[0_0_14px_#ffb4ab]';
+          simIndicatorDot.innerHTML = '<span class="material-symbols-outlined">warning</span>';
+          simStatusTitle.textContent = 'TENSION CRITIQUE (SUR-RÉSERVATION)';
+          simStatusTitle.className = 'font-headline-sm text-headline-sm text-error font-bold';
+          simStatusBadge.className = 'px-2 py-0.5 rounded font-mono-code text-[10px] bg-error-container text-error uppercase font-semibold';
+          simStatusBadge.textContent = 'CONFLIT ACTIF';
+          simStatusDesc.textContent = 'Attention : 24x Robe Megapointe déjà réservées sur le créneau du Gala VivaTech Paris.';
+          simStockQty.textContent = 'Déficit : -6 machines';
+          simStockQty.className = 'font-mono-code text-[14px] text-error font-bold';
+        } else if (val === 'led') {
+          // Option avec mise en garde
+          simIndicatorDot.className = 'w-10 h-10 rounded-xl bg-tertiary-container/30 text-tertiary flex items-center justify-center font-bold text-[18px] shadow-[0_0_14px_#69d3ff]';
+          simIndicatorDot.innerHTML = '<span class="material-symbols-outlined">hourglass_top</span>';
+          simStatusTitle.textContent = 'DISPONIBLE SOUS OPTION';
+          simStatusTitle.className = 'font-headline-sm text-headline-sm text-tertiary font-bold';
+          simStatusBadge.className = 'px-2 py-0.5 rounded font-mono-code text-[10px] bg-tertiary-container/30 text-tertiary uppercase font-semibold';
+          simStatusBadge.textContent = 'OPTION EN ATTENTE';
+          simStatusDesc.textContent = 'Un devis est pré-bloqué sur Genève. Libération automatique si non validé sous 24h.';
+          simStockQty.textContent = '1 Kit (en arbitrage)';
+          simStockQty.className = 'font-mono-code text-[14px] text-tertiary font-bold';
+        } else {
+          // Vert / Pleinement disponible
+          simIndicatorDot.className = 'w-10 h-10 rounded-xl bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-[18px] shadow-[0_0_14px_#48ebfb]';
+          simIndicatorDot.innerHTML = '<span class="material-symbols-outlined">check_circle</span>';
+          simStatusTitle.textContent = '100% DISPONIBLE';
+          simStatusTitle.className = 'font-headline-sm text-headline-sm text-on-surface font-bold';
+          simStatusBadge.className = 'px-2 py-0.5 rounded font-mono-code text-[10px] bg-secondary-container/20 text-secondary uppercase font-semibold';
+          simStatusBadge.textContent = 'AUCUN CONFLIT';
+          simStatusDesc.textContent = 'Le parc est prêt pour attribution immédiate sans contrainte de maintenance.';
+          simStockQty.textContent = '4 Kits complets en réserve';
+          simStockQty.className = 'font-mono-code text-[14px] text-secondary font-bold';
+        }
+      });
+    }
+
+    if (btnConflictsToggle) {
+      btnConflictsToggle.addEventListener('click', () => {
+        const conflictRow = document.querySelector('.bg-error-container\\/5');
+        if (conflictRow) {
+          conflictRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          conflictRow.classList.add('ring-2', 'ring-error');
+          setTimeout(() => {
+            conflictRow.classList.remove('ring-2', 'ring-error');
+          }, 2500);
+        }
+      });
+    }
+  });
+</script></main></div></body></html>

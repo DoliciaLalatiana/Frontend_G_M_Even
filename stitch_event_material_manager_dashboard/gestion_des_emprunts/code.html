@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#2d344b","tertiary-fixed-dim":"#69d3ff","primary-fixed":"#eaddff","on-tertiary":"#003546","on-secondary-container":"#00545a","tertiary-container":"#00789a","on-tertiary-container":"#e6f5ff","surface-container-low":"#141a31","on-secondary":"#00363b","surface-container":"#181f35","error":"#ffb4ab","error-container":"#93000a","primary-container":"#8054d8","surface-tint":"#d2bcff","primary-fixed-dim":"#d2bcff","outline-variant":"#4a4453","primary":"#d2bcff","on-primary-container":"#f9f1ff","surface-container-high":"#222940","outline":"#958e9f","secondary-container":"#00cfde","inverse-on-surface":"#292f47","inverse-primary":"#6f41c6","on-background":"#dce1ff","tertiary-fixed":"#bee9ff","surface-container-highest":"#2d344b","on-surface-variant":"#ccc3d5","secondary":"#48ebfb","on-primary":"#3e008e","on-secondary-fixed-variant":"#004f55","surface-container-lowest":"#060d23","on-tertiary-fixed":"#001f2a","on-secondary-fixed":"#002023","on-error-container":"#ffdad6","background":"#0b1228","surface-bright":"#323850","tertiary":"#69d3ff","inverse-surface":"#dce1ff","on-primary-fixed":"#25005a","surface-dim":"#0b1228","secondary-fixed":"#84f3ff","surface":"#0b1228","on-surface":"#dce1ff","on-error":"#690005","on-tertiary-fixed-variant":"#004d64","on-primary-fixed-variant":"#5624ac","secondary-fixed-dim":"#2adae9"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2.25rem","space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"0.75rem","gutter":"1.25rem","space-xs":"0.25rem","margin-mobile":"1rem","space-lg":"1.5rem","margin":"2rem"},fontFamily:{"headline-xl-mobile":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"mono-code":["JetBrains Mono"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"]},fontSize:{"headline-xl-mobile":["26px",{lineHeight:"34px",fontWeight:"700"}],"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"body-md":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",fontWeight:"700"}],"label-lg":["13px",{lineHeight:"18px",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["24px",{lineHeight:"32px",fontWeight:"600"}],"mono-code":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"label-md":["11px",{lineHeight:"16px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface min-h-screen relative selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute -top-40 left-20 w-[540px] h-[540px] bg-primary-container/15 rounded-full blur-[128px]"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-secondary-container/10 rounded-full blur-[140px]"></div><div class="absolute bottom-10 right-10 w-[600px] h-[600px] bg-tertiary-container/15 rounded-full blur-[160px]"></div></div><aside class="fixed left-0 top-0 h-full w-64 z-50 flex flex-col bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0_8px_32px_0_rgba(4,9,24,0.37)]"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/15"><div class="flex items-center gap-space-sm"><img alt="EVENT MANAGER Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uw0uOlIN49xmd4rT6ZeArRc6TD1wLEhzrKzV4mwbRyVpiHqpJIkSoGDomc5BJFNOdtViL83_WD-LYiqET9R5hcpxE4v6DZQDG1BH8wG784vrelhCGJPPtPIW9ohHJiqFh7keCRdi-jgX1MuzMJ3slC3I66VvFIdv5rXZBnA3-PQ_uPlWXXYHOzjHMWiLRQFqktiO5MNyluQ0tF7Bwhxnjh5naELg4t8mSkYh-R9awxWQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface leading-none">EVENT MANAGER</span><span class="font-label-md text-label-md text-secondary tracking-widest uppercase mt-0.5">Logistics Core</span></div></div><div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#48ebfb]"></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-1.5 rounded-lg bg-surface-container/60 border border-outline-variant/20 flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Parc Opérationnel</span><span class="font-mono-code text-mono-code text-secondary font-bold">PROD-FR01</span></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container font-semibold shadow-[0_0_16px_rgba(128,84,216,0.5)]"><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="tableau-de-bord" href="#">Tableau de bord</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="materiels" href="#">Matériels</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="categories" href="#">Catégories</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="evenements" href="#">Événements</a><a aria-current="page" class="block px-space-md py-2 rounded-lg transition-all bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container font-semibold shadow-[0_0_16px_rgba(128,84,216,0.5)]" data-path="emprunts" href="#">Emprunts</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="retours" href="#">Retours</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="reservations" href="#">Réservations</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="utilisateurs" href="#">Utilisateurs</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="rapports-stats" href="#">Rapports &amp; Stats</a><a class="block px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md" data-path="parametres" href="#">Paramètres</a></nav><div class="p-space-md border-t border-outline-variant/15"><div class="rounded-xl p-space-sm bg-surface-container-high/40 border border-outline-variant/20 flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">cell_tower</span><span class="font-label-md text-label-md text-on-surface-variant">Nœud Télémétrie</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-mono-code text-[10px] bg-secondary/15 text-secondary border border-secondary/30">EN LIGNE</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen relative z-10"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/20 z-40 px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface transition-colors cursor-pointer">Hub</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-secondary font-semibold">Inventaire Événementiel</span></div></div><div class="flex-1 max-w-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-14 py-1.5 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/40 transition-all" placeholder="Rechercher réf, QR, kit, salle, technicien..." type="text"/><kbd class="absolute right-2.5 px-1.5 py-0.5 rounded font-mono-code text-[10px] bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">⌘K</kbd></div></div><div class="flex items-center gap-space-md shrink-0"><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary border border-primary/30 text-on-primary-container font-label-lg text-label-lg shadow-[0_0_14px_rgba(128,84,216,0.35)] hover:shadow-[0_0_20px_rgba(72,235,251,0.45)] hover:border-secondary/60 transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Action rapide</span></button><button aria-label="Notifications" class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/60 transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-surface-container-lowest shadow-[0_0_8px_#48ebfb]"></span></button><div class="h-8 w-px bg-outline-variant/20"></div><div class="flex items-center gap-space-sm pl-1"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3M13MZ36D9d7Qt7bwqsHbydkPhuohHUtBzeGGx4ZjnhHTjwBs8uVpZrexZE3uSq7soA9CUQSKS1FyzZnqrNnUmWQb16oEkVJeJiq6FZFkVZz6L2baXC5Az1J8on2M27xVTpqmE9dadMskB_rDyLv-YN9ZFBxOeeOjnjrlM-ROHyD5qdarEnIdEcqlioJP-zZ4iAUknhVDlFkdc3RMm7gI0d-Yq5IJnMWJGOljXCW"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary ring-1 ring-background"></span></div><div class="flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface leading-tight">Alexandre Mercier</span><div class="flex items-center gap-1"><span class="font-label-md text-label-md text-secondary font-medium">Régisseur Général</span><span class="inline-flex px-1 rounded font-mono-code text-[9px] bg-primary-container/25 text-primary border border-primary/30 uppercase">Admin</span></div></div></div></div></header><main class="relative pt-16 w-full flex-1 px-gutter py-margin bg-transparent"><div class="flex flex-col w-full space-y-space-lg">
+<!-- 1. En-tête & Contrôles Rapides -->
+<header class="relative flex flex-col lg:flex-row lg:items-center justify-between gap-space-md p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-xl overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary-container/20 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-48 h-48 bg-secondary-container/15 rounded-full blur-[70px] pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary font-mono-code text-mono-code">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#48ebfb]"></span>
+          DISPATCH CORE LIVE
+        </span>
+<span class="font-mono-code text-label-md text-on-surface-variant">FLUX #EMP-2025</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Gestion des Emprunts &amp; Sorties</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Suivi en temps réel des dotations techniques, départs dépôt et contrats de prêt avec traçabilité RFID &amp; contrôle d'intégrité.
+      </p>
+</div>
+<div class="relative z-10 flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-high/60 hover:bg-surface-container-high text-tertiary font-label-lg text-label-lg shadow-sm transition-all duration-200" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>Exporter bons de prêt</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container font-label-lg text-label-lg shadow-[0_0_18px_rgba(128,84,216,0.45)] hover:shadow-[0_0_24px_rgba(72,235,251,0.5)] transition-all duration-200" id="openNewLoanDrawer" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Nouvel Emprunt</span>
+</button>
+</div>
+</header>
+<!-- 2. Synthèse d'activité : 4 Cartes en verre glacé -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Stat 1 -->
+<div class="relative p-space-md rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Emprunts en cours</span>
+<span class="font-headline-xl text-headline-xl text-on-surface mt-1">42 <span class="font-headline-sm text-headline-sm text-secondary">bons</span></span>
+</div>
+<div class="p-2.5 rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[24px]">assignment_turned_in</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between font-mono-code text-mono-code">
+<span class="text-on-surface-variant">Sur site actif</span>
+<span class="text-secondary font-semibold">214 équipements</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[72%] shadow-[0_0_8px_#48ebfb]"></div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="relative p-space-md rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Sorties du jour</span>
+<span class="font-headline-xl text-headline-xl text-on-surface mt-1">12 <span class="font-headline-sm text-headline-sm text-tertiary">départs</span></span>
+</div>
+<div class="p-2.5 rounded-lg bg-tertiary/10 text-tertiary">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between font-mono-code text-mono-code">
+<span class="text-on-surface-variant">Validation quai</span>
+<span class="text-tertiary font-semibold">100% scannés</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full w-[100%] shadow-[0_0_8px_#69d3ff]"></div>
+</div>
+</div>
+<!-- Stat 3 (Alerte rougeoyant néon) -->
+<div class="relative p-space-md rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 bg-error/15 rounded-full blur-[40px] pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Retards restitution</span>
+<span class="font-headline-xl text-headline-xl text-error mt-1">03 <span class="font-headline-sm text-headline-sm text-error/80">alertes</span></span>
+</div>
+<div class="p-2.5 rounded-lg bg-error/15 text-error shadow-[0_0_12px_rgba(255,180,171,0.25)]">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between font-mono-code text-mono-code relative z-10">
+<span class="text-on-surface-variant">Dépassement critique</span>
+<span class="text-error font-semibold">&gt; 48 heures</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden relative z-10">
+<div class="bg-error h-full rounded-full w-[28%] shadow-[0_0_8px_#ffb4ab]"></div>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="relative p-space-md rounded-xl bg-surface-container-low/80 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden group hover:bg-surface-container-low transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Valeur sous caution</span>
+<span class="font-headline-xl text-headline-xl text-primary mt-1">1.42 <span class="font-headline-sm text-headline-sm text-primary-fixed-dim">M€</span></span>
+</div>
+<div class="p-2.5 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between font-mono-code text-mono-code">
+<span class="text-on-surface-variant">Couverture Allianz Pro</span>
+<span class="text-primary-fixed-dim font-semibold">Valide 100%</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full w-[94%] shadow-[0_0_8px_#8054d8]"></div>
+</div>
+</div>
+</section>
+<!-- 3. Barre d'outils, Filtres rapides & Recherche -->
+<section class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container/60 backdrop-blur-xl shadow-md">
+<div class="flex flex-1 flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-on-surface-variant/50 font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/40 shadow-inner" id="loanSearchInput" placeholder="Rechercher par Réf (ex: EMP-2025), technicien, matériel..." type="text"/>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto py-1">
+<button class="px-3 py-1.5 rounded-lg bg-secondary/15 text-secondary font-label-md text-label-md shadow-sm whitespace-nowrap" type="button">Tous (42)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors whitespace-nowrap" type="button">En cours (31)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-error font-label-md text-label-md transition-colors whitespace-nowrap flex items-center gap-1" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+          En retard (3)
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors whitespace-nowrap" type="button">Partiel (5)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors whitespace-nowrap" type="button">Réservé (3)</button>
+</div>
+</div>
+<!-- Right Selectors -->
+<div class="flex items-center gap-space-xs shrink-0 self-end lg:self-center">
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 rounded-xl bg-surface-container-lowest/80 text-on-surface-variant font-body-sm text-body-sm focus:outline-none cursor-pointer">
+<option>Tous les événements</option>
+<option>Festival Nuits Sonores Lyon</option>
+<option>Opéra Garnier - Récital</option>
+<option>Main Square Festival Arras</option>
+<option>Fashion Week Paris 2025</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">keyboard_arrow_down</span>
+</div>
+<button class="p-2 rounded-xl bg-surface-container-lowest/80 hover:bg-surface-container-high text-on-surface-variant" title="Filtres avancés" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</section>
+<!-- 4. Tableau Détaillé des Emprunts -->
+<section class="rounded-xl bg-surface-container/60 backdrop-blur-xl shadow-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/60 text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3.5 px-4 font-semibold">Réf Bon &amp; RFID</th>
+<th class="py-3.5 px-4 font-semibold">Emprunteur &amp; Équipe</th>
+<th class="py-3.5 px-4 font-semibold">Matériels Empruntés</th>
+<th class="py-3.5 px-4 font-semibold">Événement Lié</th>
+<th class="py-3.5 px-4 font-semibold">Départ</th>
+<th class="py-3.5 px-4 font-semibold">Retour Prévu</th>
+<th class="py-3.5 px-4 font-semibold">Statut</th>
+<th class="py-3.5 px-4 font-semibold text-right">Actions Directes</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10 font-body-md text-body-md text-on-surface">
+<!-- LIGNE 1 : En cours standard -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono-code text-body-md font-bold text-secondary">#EMP-8942</span>
+<span class="inline-flex items-center gap-1 font-mono-code text-label-md text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[13px] text-tertiary">contactless</span>
+                  RFID-TX982
+                </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait professionnel d'un régisseur lumière portant un casque audio noir et une veste technique dans la pénombre d'une régie éclairée aux néons violets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADRpPAQenSFfoULTsZqWJDYJRIHv8dIFRkSMEJbM7g2_-YLvyTKK2XXKTtSyEO1vvMlY1RBNMDFnUeN6jJ2iEumTh2HDSEnwieH2m83A4tdbUtOy5bKEoinjql20KBu0bqjWxJSmT8yKf_yUaiBN0_qy9oFve4p305M2WVXx7F-LPGuk79m4bOAJ9_1FZ2P3n239qG7dHisvkeP-HaZoMsxaup1Zda1_RVLU3VrgJJ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Thomas Laroche</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Lead Light • S Group Prod</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3 min-w-[200px]">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Projecteurs asservis Robe MegaPointe professionnels rangés dans un flight case noir renforcé en aluminium avec rétroéclairage cyan glacial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMSzYmPAxzHvelH05MKhD9B8pHAQES5Jz3krsfktx3Bjo-r4j1krGITQH96dATeUrZTwHqTbffcacNNXt4HMM2h7Ukg5B-OaSgqx_zcKP9AwPvRw4Kcd3fpQuGZdBW9oz5gMnZ35ras416an0V5QCehNENPZQhTygwPZXWNgBAfitboSr6pLoHmVq7eY9KIi1u9F14sv-o5iTRKZ3QcAcS-Ty2_d9PTuO8nJPN3WH2"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-medium truncate">Kit 8x Robe MegaPointe</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">8 pcs • Flight FC-04B</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[15px] text-secondary">stadium</span>
+                Nuits Sonores 2025
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap font-mono-code text-body-sm text-on-surface-variant">
+              18 Mai, 08:30
+            </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col font-mono-code">
+<span class="text-body-sm text-on-surface">22 Mai, 19:00</span>
+<span class="text-label-md text-secondary font-semibold">Dans 3 jours (J-3)</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#48ebfb]"></span>
+                En cours
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-secondary/15 hover:bg-secondary/25 text-secondary font-label-md text-label-md transition-all flex items-center gap-1" title="Enregistrer le retour" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  Retour
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Imprimer bon de prêt" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Détails" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- LIGNE 2 : EN RETARD CRITIQUE (Alerte Rougeoyante) -->
+<tr class="hover:bg-error/5 bg-error/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono-code text-body-md font-bold text-error">#EMP-8930</span>
+<span class="inline-flex items-center gap-1 font-mono-code text-label-md text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[13px] text-error">sensors</span>
+                  RFID-TX844
+                </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait en contre-jour d'une ingénieure du son concentrée dans un studio sombre équipé de consoles de mixage illuminées par des voyants cyan et vert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBa5_riNRqIURAjz64P5Mqo339Kjl1YH6loW8BLpJP_3trrgP5TsjRpsTjDRSk7RIA2YQQctLIco9O7XImZtKPBhJY1F482QyITiezzzB29bJelTDD5kRkegAT7LiFTbYz-DlTiJAuUmQ1wQKum_LTlkbosabeu-uEEEudbXBoqb-Uxb-cCJhJ151B16uwbXqxCjs8YP524zoms1Qs2t6c_yClL5r8AU7MAtA7cHhI"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Céline Vasseur</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Ingénieur Son • LiveSound Co</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3 min-w-[200px]">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Console de mixage audio numérique haut de gamme Yamaha Rivage avec écrans tactiles et faders motorisés illuminés dans un environnement sombre" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC7Kyw_jVIn821d4VdzxhbhPCkLZ-R_VnD5T6ZHhA27XCxMN99N0l4ZtJgD6DsULN2YDrqTMN-gRw8L8HQJyidO_BvnVxUTb6l5bw0PvoFlWm4mqAFPyUSjvgcF_yRusVegWkRncJM82UpVK00dUvs_2kgf2lyQLC0pUk4GBlG6KuKRK-f_kCGvw5NLZiV8IvG5fNxWRpe8kCAMEK1GuOL8UAiDFUJ87kyuIg9ES68"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-medium truncate">Yamaha Rivage PM7</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">1 pc • Case Touring Pro</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[15px] text-primary">theater_comedy</span>
+                Opéra Garnier - Récital
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap font-mono-code text-body-sm text-on-surface-variant">
+              12 Mai, 14:00
+            </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col font-mono-code">
+<span class="text-body-sm text-error font-bold">16 Mai, 12:00</span>
+<span class="text-label-md text-error animate-pulse font-semibold">Dépassement (+72h)</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error/15 text-error font-label-md text-label-md shadow-[0_0_8px_rgba(255,180,171,0.3)]">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Retard critique
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-error/20 hover:bg-error/30 text-error font-label-md text-label-md transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">notification_important</span>
+                  Relancer
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Imprimer bon de prêt" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Détails" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- LIGNE 3 : Urgent / J-0 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono-code text-body-md font-bold text-tertiary">#EMP-8947</span>
+<span class="inline-flex items-center gap-1 font-mono-code text-label-md text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[13px] text-tertiary">qr_code_2</span>
+                  QR-AV-5011
+                </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait d'un technicien vidéo portant un sweat à capuche noir avec badge d'accès festival sur cordon orange dans une régie vidéo sombre" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvDqZsyre-KuXmbQtCKkKtIUVpENbZOCH5a4ReW9zJrVR6SeFWVxahkosTPskB0CsRafmU1BDAaYP2IZr9dU6G7vxflpSEup2UgmwOJVu0Am94MZ-TW95jYt7gTXoudKjDulqqskaFs-AywgzUjzxbk6NXQ3r-2T4JHuddzvr_h_qL-IgGWB3C6S22Z_JEc02V2vToj3jAeDXn4Nni4-cECnvjzEeIwfROTYt7prGK"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Marc Antoine</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Régie Vidéo • ArtDisplay</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3 min-w-[200px]">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Écran modulaire LED haute résolution suspendu sur structure scénique en aluminium noir émettant une lumière néon bleue et violette intense" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtL4rCvby1FNoh9fDI5lVrvVYCn21hm00BUefQFm9kjnkx_dGaMlwC7ZtWTs4v0rM2mGFOZ1FO-ErxjntnqQotTCt-eKBqmGKoo1OZcOLk9BbRngyb55BdluWJ9TpDeczhD8xR18YGhc5gRZfJLOiqtnKze9sB2ESosyX2mMvuFNklbkx5sIg2uPX0mUkj_X3yu_-c9XO0IDW0JUbooHWadsCAQPumDL7i7vbWvU31"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-medium truncate">Pack Dalles LED Absen P2.9</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">24 dalles • 3 Cases</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[15px] text-secondary">festival</span>
+                Main Square 2025
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap font-mono-code text-body-sm text-on-surface-variant">
+              17 Mai, 06:00
+            </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col font-mono-code">
+<span class="text-body-sm text-tertiary font-bold">Aujourd'hui, 23:00</span>
+<span class="text-label-md text-tertiary font-semibold">Urgent (J-0 / Fin ce soir)</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/30 text-tertiary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_6px_#69d3ff]"></span>
+                Urgent J-0
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-tertiary-container/40 hover:bg-tertiary-container/60 text-tertiary-fixed font-label-md text-label-md transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+                  Clôturer
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Imprimer" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Détails" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- LIGNE 4 : Prolongé / Avenant -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono-code text-body-md font-bold text-primary">#EMP-8951</span>
+<span class="inline-flex items-center gap-1 font-mono-code text-label-md text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[13px] text-primary">barcode_reader</span>
+                  BC-90412
+                </span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait en pied d'un directeur technique de défilé de mode observant des faisceaux lumineux violet et cyan dans un hangar moderne réaménagé" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIdvHw7lo7KNGmp_e1wxSF7gOfteWlA73hsv-8GkAGCfQrczD3HOQvBgAABQNSdVWiJZfBj2YF5Q8DpPX-GlTeHjdS3AW4RpOB5Yy9uZudCtkW5t3OFPYzUcmRm9Jh_mtmCgHcqte_PVCw5h2zRJB1Qq1EdbvMivXwxC1LiPvIMk9z6ierH_bObQg6W3P0v9Do7SLA-FIOiEj_D0n4hALsaNxjU1TMS5oSXev3mMlQ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Élodie Fontaine</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Dir. Technique • LuxEvents</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3 min-w-[200px]">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Tubes lumineux LED sans fil Astera Titan rangés et en charge dans leur mallette de transport blindée luminescente" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAibNBkDaWvp96LyGg9xYzJGEpVIFkHQHMDNTEbF9pg4qGGWLKPg-ZNfRVLb9TW-Oig6wuHsQADWCMQdm-DO1X4zPaAO88LMrH75-VjgadgGbR7rOCsyHVeLxrfGbNodS3BtLxzu5_KhcAsUUaanIJ8Gzy4L5xWf7gdsFTaj51BcrrlWAhy-3HIGyS2M2FHSy6Ue7bGYSj1qeB6FnvfC-HiwFfQUrBM5wfzXtVWawjl"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-medium truncate">Kit 16x Astera Titan Tubes</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">16 tubes • 2 Charging Cases</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[15px] text-tertiary">diamond</span>
+                Fashion Week Paris
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap font-mono-code text-body-sm text-on-surface-variant">
+              15 Mai, 11:15
+            </td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col font-mono-code">
+<span class="text-body-sm text-on-surface">26 Mai, 18:00</span>
+<span class="text-label-md text-primary font-semibold">Prolongé (+4j validés)</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/20 text-primary-fixed-dim font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Prolongé
+              </span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+                  Avenant
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Imprimer" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all" title="Détails" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Meta -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm p-space-md bg-surface-container-lowest/60 border-t border-outline-variant/10">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+        Affichage de <span class="font-mono-code font-bold text-on-surface">1 - 4</span> sur <span class="font-mono-code font-bold text-on-surface">42</span> bons d'emprunt enregistrés
+      </span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-high/30 text-on-surface-variant/40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded-lg bg-secondary/15 text-secondary font-mono-code text-body-sm font-semibold" type="button">1</button>
+<button class="px-3 py-1 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-mono-code text-body-sm" type="button">2</button>
+<button class="px-3 py-1 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-mono-code text-body-sm" type="button">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant font-mono-code text-body-sm" type="button">11</button>
+<button class="p-1.5 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 5. VOLET LATÉRAL FLOTTANT / MODAL : Formulaire Nouveau Bon d'Emprunt -->
+<aside class="fixed inset-y-0 right-0 w-full max-w-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col bg-surface-container-low/95 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden" id="newLoanDrawer">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-lowest/80 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-container to-inverse-primary flex items-center justify-center text-on-primary shadow-[0_0_12px_rgba(128,84,216,0.5)]">
+<span class="material-symbols-outlined text-[22px]">post_add</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Nouveau Bon d'Emprunt</h2>
+<span class="font-mono-code text-mono-code text-secondary">ÉDITION FLUX • REF-GEN: #EMP-2025-8952</span>
+</div>
+</div>
+<button class="p-2 rounded-xl bg-surface-container-high/50 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" id="closeNewLoanDrawer" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body (Formulaire Dark Ice Glass) -->
+<div class="flex-1 overflow-y-auto p-space-lg space-y-space-md">
+<!-- Section 1 : Emprunteur & Événement -->
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-lg space-y-space-sm">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">person_pin</span>
+<span>1. Affectation &amp; Responsable</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Emprunteur / Technicien *</label>
+<div class="relative">
+<select class="w-full appearance-none pl-3 pr-8 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary">
+<option>Sélectionner un technicien...</option>
+<option selected="">Thomas Laroche (Lead Light)</option>
+<option>Céline Vasseur (Ingénieur Son)</option>
+<option>Marc Antoine (Régie Vidéo)</option>
+<option>Élodie Fontaine (Dir. Technique)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Événement de destination *</label>
+<div class="relative">
+<select class="w-full appearance-none pl-3 pr-8 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary">
+<option>Sélectionner un événement...</option>
+<option selected="">Festival Nuits Sonores 2025</option>
+<option>Opéra Garnier - Récital</option>
+<option>Main Square Festival Arras</option>
+<option>Fashion Week Paris 2025</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Lieu de livraison / Quai d'enlèvement</label>
+<input class="w-full px-3 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary" type="text" value="Dépôt Central Vénissieux - Quai 3"/>
+</div>
+</div>
+<!-- Section 2 : Scan Matériel & Dotation -->
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-lg space-y-space-sm">
+<div class="flex items-center justify-between text-secondary font-label-md text-label-md uppercase tracking-wider">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">barcode_scanner</span>
+<span>2. Scan Matériel &amp; Flight Cases</span>
+</div>
+<span class="font-mono-code text-[11px] text-tertiary">RFID ACTIF</span>
+</div>
+<!-- Scanner simulation input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-secondary text-[20px] animate-pulse">qr_code_scanner</span>
+<input class="w-full pl-11 pr-24 py-3 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-mono-code text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary shadow-[inset_0_0_12px_rgba(0,0,0,0.4)]" placeholder="Bipez le code-barres ou l'étiquette RFID..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-lg bg-secondary/15 hover:bg-secondary/25 text-secondary font-label-md text-label-md transition-colors" type="button">
+            Ajouter
+          </button>
+</div>
+<!-- Matériels listés dans le panier de sortie -->
+<div class="space-y-2 mt-3">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-lowest/80 text-on-surface">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg leading-tight">Projecteur Robe Spiider (Kit x4)</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">SN-SP-4401 • Flight Case #FC-12</span>
+</div>
+</div>
+<div class="flex items-center gap-3 font-mono-code text-body-sm">
+<span class="text-secondary font-bold">4 pcs</span>
+<button class="text-on-surface-variant hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-lowest/80 text-on-surface">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg leading-tight">Câblage DMX 5 broches (Bobine 100m)</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">SN-CB-1092 • Touret Pro</span>
+</div>
+</div>
+<div class="flex items-center gap-3 font-mono-code text-body-sm">
+<span class="text-secondary font-bold">2 pcs</span>
+<button class="text-on-surface-variant hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3 : Dates & Restitution -->
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-lg space-y-space-sm">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>3. Calendrier &amp; Retour Estimé</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Date &amp; heure de départ</label>
+<input class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface font-mono-code text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" type="datetime-local" value="2025-05-19T08:00"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Date limite de retour *</label>
+<input class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface font-mono-code text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" type="datetime-local" value="2025-05-24T18:00"/>
+</div>
+</div>
+</div>
+<!-- Section 4 : Signature Numérique & Validation du Bon -->
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-lg space-y-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span>4. Émargement &amp; Signature Numérique</span>
+</div>
+<span class="text-tertiary">Certifié LogiSign</span>
+</div>
+<!-- Zone de signature style tablette tactile -->
+<div class="relative w-full h-28 rounded-xl bg-surface-container-lowest flex items-center justify-center overflow-hidden cursor-crosshair group shadow-inner">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(#48ebfb_1px,transparent_1px)] [background-size:12px_12px]"></div>
+<svg class="w-full h-full text-secondary/60 group-hover:text-secondary transition-colors" fill="none" viewbox="0 0 300 80">
+<path d="M 20 50 Q 60 10, 90 40 T 150 45 T 220 20 T 280 40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+<span class="absolute bottom-2 right-3 font-mono-code text-[10px] text-on-surface-variant">Signature enregistrée : T. Laroche</span>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<input checked="" class="rounded bg-surface-container-lowest text-primary focus:ring-0 w-4 h-4 cursor-pointer" id="cautionCheck" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="cautionCheck">
+            J'atteste la conformité des numéros de série et accepte les conditions de prêt matériel.
+          </label>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-lg bg-surface-container-lowest/90 flex items-center justify-end gap-space-sm shrink-0">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors" id="cancelNewLoanDrawer" type="button">
+        Annuler
+      </button>
+<button class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container font-label-lg text-label-lg shadow-[0_0_18px_rgba(128,84,216,0.5)] hover:shadow-[0_0_24px_rgba(72,235,251,0.6)] transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">check</span>
+<span>Valider et Imprimer le Bon</span>
+</button>
+</div>
+</aside>
+<!-- Overlay d'arrière-plan pour le tiroir -->
+<div class="fixed inset-0 bg-surface-container-lowest/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300" id="drawerOverlay"></div>
+</div>
+<!-- Micro-interaction JS pour l'ouverture/fermeture du volet sans framework externe -->
+<script>
+  (function () {
+    const openBtn = document.getElementById('openNewLoanDrawer');
+    const closeBtn = document.getElementById('closeNewLoanDrawer');
+    const cancelBtn = document.getElementById('cancelNewLoanDrawer');
+    const drawer = document.getElementById('newLoanDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      overlay.classList.remove('hidden');
+      setTimeout(() => {
+        overlay.classList.remove('opacity-0');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeDrawer() {
+      drawer.classList.add('translate-x-full');
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+      }, 300);
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+  })();
+</script></main></div></body></html>

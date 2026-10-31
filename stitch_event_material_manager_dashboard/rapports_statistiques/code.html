@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#2d344b","tertiary-fixed-dim":"#69d3ff","primary-fixed":"#eaddff","on-tertiary":"#003546","on-secondary-container":"#00545a","tertiary-container":"#00789a","on-tertiary-container":"#e6f5ff","surface-container-low":"#141a31","on-secondary":"#00363b","surface-container":"#181f35","error":"#ffb4ab","error-container":"#93000a","primary-container":"#8054d8","surface-tint":"#d2bcff","primary-fixed-dim":"#d2bcff","outline-variant":"#4a4453","primary":"#d2bcff","on-primary-container":"#f9f1ff","surface-container-high":"#222940","outline":"#958e9f","secondary-container":"#00cfde","inverse-on-surface":"#292f47","inverse-primary":"#6f41c6","on-background":"#dce1ff","tertiary-fixed":"#bee9ff","surface-container-highest":"#2d344b","on-surface-variant":"#ccc3d5","secondary":"#48ebfb","on-primary":"#3e008e","on-secondary-fixed-variant":"#004f55","surface-container-lowest":"#060d23","on-tertiary-fixed":"#001f2a","on-secondary-fixed":"#002023","on-error-container":"#ffdad6","background":"#0b1228","surface-bright":"#323850","tertiary":"#69d3ff","inverse-surface":"#dce1ff","on-primary-fixed":"#25005a","surface-dim":"#0b1228","secondary-fixed":"#84f3ff","surface":"#0b1228","on-surface":"#dce1ff","on-error":"#690005","on-tertiary-fixed-variant":"#004d64","on-primary-fixed-variant":"#5624ac","secondary-fixed-dim":"#2adae9"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"2rem",gutter:"1.25rem","margin-mobile":"1rem","space-xl":"2.25rem","gutter-mobile":"0.75rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem"},fontFamily:{"label-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"mono-code":["JetBrains Mono"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"label-lg":["13px",{lineHeight:"18px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-xl-mobile":["26px",{lineHeight:"34px",fontWeight:"700"}],"label-md":["11px",{lineHeight:"16px",fontWeight:"600"}],"body-md":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"mono-code":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface min-h-screen relative selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute -top-40 left-20 w-[540px] h-[540px] bg-primary-container/15 rounded-full blur-[128px]"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-secondary-container/10 rounded-full blur-[140px]"></div><div class="absolute bottom-10 right-10 w-[600px] h-[600px] bg-tertiary-container/15 rounded-full blur-[160px]"></div></div><aside class="fixed left-0 top-0 h-full w-64 z-50 flex flex-col bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0_8px_32px_0_rgba(4,9,24,0.37)]"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/15"><div class="flex items-center gap-space-sm"><img alt="EVENT MANAGER Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uw0uOlIN49xmd4rT6ZeArRc6TD1wLEhzrKzV4mwbRyVpiHqpJIkSoGDomc5BJFNOdtViL83_WD-LYiqET9R5hcpxE4v6DZQDG1BH8wG784vrelhCGJPPtPIW9ohHJiqFh7keCRdi-jgX1MuzMJ3slC3I66VvFIdv5rXZBnA3-PQ_uPlWXXYHOzjHMWiLRQFqktiO5MNyluQ0tF7Bwhxnjh5naELg4t8mSkYh-R9awxWQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface leading-none">EVENT MANAGER</span><span class="font-label-md text-label-md text-secondary tracking-widest uppercase mt-0.5">Logistics Core</span></div></div><div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#48ebfb]"></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-1.5 rounded-lg bg-surface-container/60 border border-outline-variant/20 flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Parc Opérationnel</span><span class="font-mono-code text-mono-code text-secondary font-bold">PROD-FR01</span></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-[0_0_16px_rgba(128,84,216,0.35)]"><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Tableau de bord</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="materiels" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Matériels</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span class="font-body-md text-body-md">Catégories</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="evenements" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-body-md text-body-md">Événements</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="emprunts" href="#"><span class="material-symbols-outlined text-[20px]">north_east</span><span class="font-body-md text-body-md">Emprunts</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="retours" href="#"><span class="material-symbols-outlined text-[20px]">south_west</span><span class="font-body-md text-body-md">Retours</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reservations" href="#"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="font-body-md text-body-md">Réservations</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="utilisateurs" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Utilisateurs</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rapports-stats" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Rapports &amp; Stats</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Paramètres</span></a></nav><div class="p-space-md border-t border-outline-variant/15"><div class="rounded-xl p-space-sm bg-surface-container-high/40 border border-outline-variant/20 flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">cell_tower</span><span class="font-label-md text-label-md text-on-surface-variant">Nœud Télémétrie</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-mono-code text-[10px] bg-secondary/15 text-secondary border border-secondary/30">EN LIGNE</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen relative z-10"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/20 z-40 px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface transition-colors cursor-pointer">Hub</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-secondary font-semibold">Inventaire Événementiel</span></div></div><div class="flex-1 max-w-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-14 py-1.5 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/40 transition-all" placeholder="Rechercher réf, QR, kit, salle, technicien..." type="text"/><kbd class="absolute right-2.5 px-1.5 py-0.5 rounded font-mono-code text-[10px] bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">⌘K</kbd></div></div><div class="flex items-center gap-space-md shrink-0"><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary border border-primary/30 text-on-primary-container font-label-lg text-label-lg shadow-[0_0_14px_rgba(128,84,216,0.35)] hover:shadow-[0_0_20px_rgba(72,235,251,0.45)] hover:border-secondary/60 transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Action rapide</span></button><button aria-label="Notifications" class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/60 transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-surface-container-lowest shadow-[0_0_8px_#48ebfb]"></span></button><div class="h-8 w-px bg-outline-variant/20"></div><div class="flex items-center gap-space-sm pl-1"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3M13MZ36D9d7Qt7bwqsHbydkPhuohHUtBzeGGx4ZjnhHTjwBs8uVpZrexZE3uSq7soA9CUQSKS1FyzZnqrNnUmWQb16oEkVJeJiq6FZFkVZz6L2baXC5Az1J8on2M27xVTpqmE9dadMskB_rDyLv-YN9ZFBxOeeOjnjrlM-ROHyD5qdarEnIdEcqlioJP-zZ4iAUknhVDlFkdc3RMm7gI0d-Yq5IJnMWJGOljXCW"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary ring-1 ring-background"></span></div><div class="flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface leading-tight">Alexandre Mercier</span><div class="flex items-center gap-1"><span class="font-label-md text-label-md text-secondary font-medium">Régisseur Général</span><span class="inline-flex px-1 rounded font-mono-code text-[9px] bg-primary-container/25 text-primary border border-primary/30 uppercase">Admin</span></div></div></div></div></header><main class="relative pt-16 w-full flex-1 px-gutter py-margin bg-transparent"><div class="flex flex-col w-full">
+<!-- EN-TÊTE DE SECTION & ACTIONS STRATÉGIQUES -->
+<section class="relative mb-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-space-md">
+<div class="space-y-space-xs max-w-3xl">
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant">
+<span>Hub</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Décisionnel &amp; BI</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-secondary font-semibold">Rapports &amp; Statistiques</span>
+</div>
+<span class="px-2 py-0.5 rounded-full font-mono-code text-[10px] bg-secondary-container/15 text-secondary tracking-wider uppercase font-semibold">
+            AUDIT LOGISTIQUE • ANALYSE RENTABILITÉ DU PARC
+          </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+          Rapports &amp; Statistiques Opérationnelles
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Indicateurs de performance du parc matériel, taux de rotation par famille, analyses des pannes SAV et bilan des saisons événementielles.
+        </p>
+</div>
+<!-- BOUTONS D'ACTIONS -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container font-label-lg text-label-lg shadow-md hover:shadow-xl transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-primary-container">picture_as_pdf</span>
+<span>Télécharger Bilan Trimestriel (PDF)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-variant transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Données Brutes (Excel / CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface hover:bg-surface-container-high transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">schedule_send</span>
+<span>Planifier</span>
+</button>
+</div>
+</div>
+</section>
+<!-- BARRE DE FILTRAGE TEMPOREL ET SEGMENTATION -->
+<section class="mb-space-lg">
+<div class="rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-md shadow-lg flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
+<!-- Périodes temporelles -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mr-1">Période :</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">
+          Année 2025
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-sm" type="button">
+          Q2 (Avril - Juin)
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">
+          Mois en cours
+        </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span>Personnalisée</span>
+</button>
+</div>
+<!-- Séparateur visuel -->
+<div class="hidden xl:block h-6 w-px bg-surface-variant"></div>
+<!-- Segment Familles & Actualisation -->
+<div class="flex flex-wrap items-center justify-between xl:justify-end gap-space-sm flex-1">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mr-1">Famille :</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary font-mono-code text-mono-code cursor-pointer hover:bg-surface-variant">Tous</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-mono-code text-mono-code cursor-pointer hover:text-on-surface hover:bg-surface-container-high">Son</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-mono-code text-mono-code cursor-pointer hover:text-on-surface hover:bg-surface-container-high">Éclairage</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-mono-code text-mono-code cursor-pointer hover:text-on-surface hover:bg-surface-container-high">Vidéo</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-mono-code text-mono-code cursor-pointer hover:text-on-surface hover:bg-surface-container-high">Structures</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-mono-code text-mono-code cursor-pointer hover:text-on-surface hover:bg-surface-container-high">Énergie</span>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-secondary/15 text-secondary font-label-md text-label-md hover:bg-secondary/25 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span>
+<span>Actualiser les métriques</span>
+</button>
+</div>
+</div>
+</section>
+<!-- BANDEAU SUPÉRIEUR KPI DE PERFORMANCE (4 CARTES DARK ICE GLASS) -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter mb-space-lg">
+<!-- KPI 1 -->
+<div class="rounded-xl bg-surface-container/60 backdrop-blur-xl p-space-md shadow-md relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Taux de rotation moyen</span>
+<span class="p-2 rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">78.6%</span>
+<span class="inline-flex items-center text-secondary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+          +5.2% vs N-1
+        </span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Cible saisonnière : 75.0%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="rounded-xl bg-surface-container/60 backdrop-blur-xl p-space-md shadow-md relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Taux d'incidents / SAV</span>
+<span class="p-2 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">build</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">2.4%</span>
+<span class="inline-flex items-center text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+          -0.8%
+        </span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Sous l'objectif max de 3.5%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="rounded-xl bg-surface-container/60 backdrop-blur-xl p-space-md shadow-md relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-secondary-container/10 rounded-full blur-2xl group-hover:bg-secondary-container/20 transition-all"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Valeur amortie mobilisée</span>
+<span class="p-2 rounded-lg bg-surface-container-high text-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">2.85 M€</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">sur 3.4M€</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Équipements engagés en tournée</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="rounded-xl bg-surface-container/60 backdrop-blur-xl p-space-md shadow-md relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-tertiary-container/15 rounded-full blur-2xl group-hover:bg-tertiary-container/30 transition-all"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Délai moyen de retour</span>
+<span class="p-2 rounded-lg bg-tertiary-container/20 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">history_toggle_off</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">1.2 j</span>
+<span class="inline-flex items-center text-tertiary font-label-md text-label-md font-semibold">
+          -0.4 j
+        </span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Post-clôture de plateau</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+</div>
+</section>
+<!-- GRILLE DE GRAPHIQUES ANALYTIQUES PROFESSIONNELS -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-lg">
+<!-- GRAPHIQUE 1 : ÉVOLUTION EMPRUNTS VS RETOURS (7 COLS) -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-lg shadow-lg flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-xs mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">insights</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+                Flux Temporel : Sorties vs Réintégrations
+              </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Dynamique mensuelle des mouvements matériels sur le semestre (Janv - Juin 2025)
+            </p>
+</div>
+<div class="flex items-center gap-space-sm font-label-md text-label-md shrink-0">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 rounded-full bg-primary"></span>
+<span class="text-on-surface-variant">Emprunts (Sorties)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">Retours validés</span>
+</div>
+</div>
+</div>
+<!-- VISUALISATION SVG AVEC COURBES ET DÉGRADÉ -->
+<div class="relative w-full h-64 mt-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 600 220">
+<defs>
+<!-- Dégradé Emprunts (Violet) -->
+<lineargradient id="gradViolet" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#8054d8" stop-opacity="0.38"></stop>
+<stop offset="100%" stop-color="#8054d8" stop-opacity="0.0"></stop>
+</lineargradient>
+<!-- Dégradé Retours (Cyan) -->
+<lineargradient id="gradCyan" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#48ebfb" stop-opacity="0.32"></stop>
+<stop offset="100%" stop-color="#48ebfb" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Lignes directrices horizontales -->
+<line stroke="#2d344b" stroke-dasharray="4 4" stroke-opacity="0.3" x1="0" x2="600" y1="40" y2="40"></line>
+<line stroke="#2d344b" stroke-dasharray="4 4" stroke-opacity="0.3" x1="0" x2="600" y1="90" y2="90"></line>
+<line stroke="#2d344b" stroke-dasharray="4 4" stroke-opacity="0.3" x1="0" x2="600" y1="140" y2="140"></line>
+<line stroke="#2d344b" stroke-opacity="0.3" x1="0" x2="600" y1="190" y2="190"></line>
+<!-- Aire Emprunts -->
+<path d="M 0 160 Q 60 140 120 120 T 240 70 T 360 90 T 480 40 T 600 55 L 600 190 L 0 190 Z" fill="url(#gradViolet)"></path>
+<!-- Courbe Emprunts -->
+<path d="M 0 160 Q 60 140 120 120 T 240 70 T 360 90 T 480 40 T 600 55" fill="none" stroke="#d2bcff" stroke-width="3"></path>
+<!-- Aire Retours -->
+<path d="M 0 170 Q 60 155 120 140 T 240 100 T 360 80 T 480 75 T 600 60 L 600 190 L 0 190 Z" fill="url(#gradCyan)"></path>
+<!-- Courbe Retours -->
+<path d="M 0 170 Q 60 155 120 140 T 240 100 T 360 80 T 480 75 T 600 60" fill="none" stroke="#48ebfb" stroke-width="2.5"></path>
+<!-- Puces de données clés -->
+<circle cx="120" cy="120" fill="#0b1228" r="4" stroke="#d2bcff" stroke-width="2"></circle>
+<circle cx="240" cy="70" fill="#0b1228" r="4" stroke="#d2bcff" stroke-width="2"></circle>
+<circle cx="360" cy="90" fill="#0b1228" r="4" stroke="#d2bcff" stroke-width="2"></circle>
+<circle cx="480" cy="40" fill="#d2bcff" r="5"></circle>
+<circle cx="120" cy="140" fill="#0b1228" r="4" stroke="#48ebfb" stroke-width="2"></circle>
+<circle cx="240" cy="100" fill="#0b1228" r="4" stroke="#48ebfb" stroke-width="2"></circle>
+<circle cx="360" cy="80" fill="#0b1228" r="4" stroke="#48ebfb" stroke-width="2"></circle>
+<circle cx="480" cy="75" fill="#48ebfb" r="5"></circle>
+</svg>
+</div>
+<!-- Axe temporel -->
+<div class="flex items-center justify-between text-on-surface-variant font-mono-code text-[11px] mt-2 px-1">
+<span>JANVIER</span>
+<span>FÉVRIER</span>
+<span>MARS</span>
+<span>AVRIL</span>
+<span>MAI (PIC FESTIVALS)</span>
+<span>JUIN</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between flex-wrap gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Tendance globale : <span class="text-secondary font-semibold">Tension de stock à 92%</span> attendue début juillet.</span>
+<button class="text-primary hover:underline font-label-md text-label-md flex items-center gap-1" type="button">
+<span>Détails prévisionnels</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- GRAPHIQUE 2 : TAUX D'UTILISATION PAR CATÉGORIE (5 COLS) -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-lg shadow-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">pie_chart</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+              Taux d'Utilisation par Famille
+            </h2>
+</div>
+<span class="font-mono-code text-[11px] text-secondary">OBJECTIF : 70%</span>
+</div>
+<!-- Barres de progression avec pourcentages -->
+<div class="space-y-space-md">
+<!-- Item 1 : Distribution Électrique -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface">Distribution Électrique &amp; Groupes</span>
+<span class="font-mono-code text-secondary font-bold">95%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container to-secondary w-[95%]"></div>
+</div>
+</div>
+<!-- Item 2 : Éclairage Robotisé -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface">Éclairage Robotisé &amp; Projecteurs</span>
+<span class="font-mono-code text-primary font-bold">91%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-primary w-[91%]"></div>
+</div>
+</div>
+<!-- Item 3 : Sonorisation Façade -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface">Sonorisation Façade &amp; Retours</span>
+<span class="font-mono-code text-secondary font-bold">86%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container to-secondary w-[86%]"></div>
+</div>
+</div>
+<!-- Item 4 : Vidéo LED & Diffusion -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface">Vidéo LED &amp; Régie Caméras</span>
+<span class="font-mono-code text-primary font-bold">74%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-primary w-[74%]"></div>
+</div>
+</div>
+<!-- Item 5 : Levage & Structures -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface">Levage, Ponts &amp; Crash Barrières</span>
+<span class="font-mono-code text-on-surface-variant font-bold">68%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-surface-variant w-[68%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs p-space-sm rounded-lg bg-surface-container-high/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">bolt</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rendement de parc global :</span>
+</div>
+<span class="font-mono-code text-[12px] text-secondary font-bold">+18.4% de rentabilité nette</span>
+</div>
+</div>
+</section>
+<!-- DEUXIÈME RANGÉE ANALYTIQUE : TOP 5 SOLLICITÉS & ANALYSE SAV -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-lg">
+<!-- GRAPHIQUE 3 : TOP 5 DES MATÉRIELS LES PLUS SOLLICITÉS (7 COLS) -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-lg shadow-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">military_tech</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+            Top 5 des Matériels les Plus Sollicités
+          </h2>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Saison 2024-2025</span>
+</div>
+<div class="space-y-space-xs">
+<!-- Rang 1 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-mono-code text-[14px] font-bold text-secondary w-5">01</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Professional line array speaker cabinet L-Acoustics Kara II on stage in a dark concert venue with cold blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmCe9Az4C35uyjlbgD_ApEKVm_myrSfkU4LoRwhney6NVpFkG3AILtr-C_1B-GqUYEhpybjDk0dpUmpb1bx4nkVshvWR-HQSj3IrspTfqkcibUr5G90joZy_KNfUJupWdkVEaEPEclkKCec2oC2fcSj1rCU4aRpuB5ebcaJLLKqE2YFLx-quF66cT4rQqucx20WPhq-0QbRgbDmO9BBxGnTwyuLl5DMtWfeWJNA3V3"/>
+</div>
+<div class="min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">L-Acoustics Kara II</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Système Enceinte Line-Array modulaire</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="text-right">
+<p class="font-mono-code text-[13px] font-bold text-on-surface">148 sorties</p>
+<p class="font-label-md text-[10px] text-secondary">Taux rotation: 98%</p>
+</div>
+<div class="text-right w-16">
+<p class="font-mono-code text-[11px] text-on-surface-variant">Usure : 14%</p>
+<div class="w-16 h-1 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[14%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rang 2 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-mono-code text-[14px] font-bold text-primary w-5">02</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Robe MegaPointe automated moving head stage lighting fixture with violet and indigo lens flare reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9YBpgX_nYl79fbfOLQhnaQlVbQGjiO0763NFwWZ0PIsRHGAelEp5RjnAsKOTfMWyl8P1seeJelcL0wLJfghPxFlmMg9g6w7jOjeprYbGySLPxueoIj4-LxzhWTyA-TXoWUmt5yqzLnGqVoN7KpvhoN2-ggZRL0XJHwiRdJfidcNymYBz_mt28agEE5TjoYaASQ6wgcipztA1H-FbxENbtX-W-8NOF0KKFi9ibZreD"/>
+</div>
+<div class="min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Robe MegaPointe</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Projecteur asservi Hybride Beam/Spot</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="text-right">
+<p class="font-mono-code text-[13px] font-bold text-on-surface">132 sorties</p>
+<p class="font-label-md text-[10px] text-primary">Taux rotation: 94%</p>
+</div>
+<div class="text-right w-16">
+<p class="font-mono-code text-[11px] text-on-surface-variant">Usure : 22%</p>
+<div class="w-16 h-1 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[22%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rang 3 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-mono-code text-[14px] font-bold text-on-surface w-5">03</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="DiGiCo Quantum 338 digital audio mixing console surface illuminated by soft cyan led display buttons in control booth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzyD1ny2k5sNQsClZcivKZfpkLfhuXwTw9kXsB977qXGQgn8pcCtXfrlNf1fya0-yehZ_v15lLIzTvXkvG5eifYno_PgSlhlMq5rsFa1VtwtuS8Tq4Q-ki-V7nAlU9dxpwB6GLlFlx0Hsot15VLFwomqJJINJWopMkappjDh9DwQcpkOLGKiy6sj7ymx7Sc0zDx0bkY0Qj1euYaEdpRJGfA79T5EN1Hsd652jqmTv2"/>
+</div>
+<div class="min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">DiGiCo Quantum 338</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Console de mixage numérique de tournée</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="text-right">
+<p class="font-mono-code text-[13px] font-bold text-on-surface">115 sorties</p>
+<p class="font-label-md text-[10px] text-secondary">Taux rotation: 89%</p>
+</div>
+<div class="text-right w-16">
+<p class="font-mono-code text-[11px] text-on-surface-variant">Usure : 9%</p>
+<div class="w-16 h-1 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[9%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rang 4 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-mono-code text-[14px] font-bold text-on-surface w-5">04</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Absen P2.5 outdoor high resolution LED modular wall panel tile stacked in flight case with glowing circuit trace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2x9E_EDh8DCmIgyW_Q1B-zu0VOeffxM5_OIRC_QIsYNN1s-ECzvw4LnwYAz2XHxXBy-Wlo0YmaUkkUvrkeyo0HUBZ9qgN5H8qlwIz6lJPXLGY9j6V1EfafnepQgY0S9b3xjGgri-0i1_rk8-QuALN5WDx6JeFjL8grvch3u_tzyhWXq2F7pJoEhxscx4ytpm6T0Ev7le-2l1Ib5AXfDMBkANaQhKmSaWXfGxTzN24"/>
+</div>
+<div class="min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Dalles LED Absen P2.5</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Module mur vidéo haute luminosité</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="text-right">
+<p class="font-mono-code text-[13px] font-bold text-on-surface">96 sorties</p>
+<p class="font-label-md text-[10px] text-on-surface-variant">Taux rotation: 82%</p>
+</div>
+<div class="text-right w-16">
+<p class="font-mono-code text-[11px] text-on-surface-variant">Usure : 31%</p>
+<div class="w-16 h-1 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-error rounded-full w-[31%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rang 5 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-mono-code text-[14px] font-bold text-on-surface w-5">05</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Astera Titan wireless battery-powered LED tube tubes glowing with vibrant neon cyan and violet gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDelPJXR6a8UVRPpUzY6kVEyGLcCsF9F5ULVihyd0G233FHTE5zgY-441mPEZaJwX34j1HHHSOJ9ma4lLOjlbdmJVS3Sq3MwzIx6Z2_YFhiz2uuFVCireoV5LHmfqsDjh1fZsKVuHPBShdZrlSJK8BRg4ICA8XCl29qnRpajyx_Lzd4LFWHWlftBvAWCDYsBptbsSrH_cLOxMXUTcs4_m2oletByLhdgfID2qI2ThA"/>
+</div>
+<div class="min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Astera Titan Tubes (Kit x8)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tubes LED sans fil sur batterie</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="text-right">
+<p class="font-mono-code text-[13px] font-bold text-on-surface">91 sorties</p>
+<p class="font-label-md text-[10px] text-secondary">Taux rotation: 80%</p>
+</div>
+<div class="text-right w-16">
+<p class="font-mono-code text-[11px] text-on-surface-variant">Usure : 18%</p>
+<div class="w-16 h-1 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[18%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- GRAPHIQUE 4 : ANALYSE DES LITIGES & PANNES SAV (5 COLS) -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-lg shadow-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-error">report_problem</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+              Litiges &amp; Causes Pannes SAV
+            </h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container/20 text-error font-mono-code text-[10px] font-bold">2.4% GLOBAL</span>
+</div>
+<!-- Donut Chart & Légende Split -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md my-space-xs">
+<!-- Donut SVG stylisé -->
+<div class="relative w-40 h-40 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 120 120">
+<!-- Fond anneau -->
+<circle cx="60" cy="60" fill="none" r="46" stroke="#222940" stroke-width="14"></circle>
+<!-- Chocs transport (45%) -->
+<circle cx="60" cy="60" fill="none" r="46" stroke="#ffb4ab" stroke-dasharray="289" stroke-dashoffset="130" stroke-linecap="round" stroke-width="14"></circle>
+<!-- Câbles défectueux (30%) -->
+<circle cx="60" cy="60" fill="none" r="46" stroke="#8054d8" stroke-dasharray="289" stroke-dashoffset="202" stroke-width="14"></circle>
+<!-- Poussière / Humidité (15%) -->
+<circle cx="60" cy="60" fill="none" r="46" stroke="#48ebfb" stroke-dasharray="289" stroke-dashoffset="245" stroke-width="14"></circle>
+<!-- Défauts composants (10%) -->
+<circle cx="60" cy="60" fill="none" r="46" stroke="#00789a" stroke-dasharray="289" stroke-dashoffset="260" stroke-width="14"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">38</span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase">Cas Qualifiés</span>
+</div>
+</div>
+<!-- Légende interactive -->
+<div class="flex-1 w-full space-y-2">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low/50">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Chocs transport / Chutes</span>
+</div>
+<span class="font-mono-code text-[12px] text-error font-bold">45%</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low/50">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Câbles écrasés &amp; fiches</span>
+</div>
+<span class="font-mono-code text-[12px] text-primary font-bold">30%</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low/50">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Poussière &amp; Intempéries</span>
+</div>
+<span class="font-mono-code text-[12px] text-secondary font-bold">15%</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low/50">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Défauts composants internes</span>
+</div>
+<span class="font-mono-code text-[12px] text-tertiary font-bold">10%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm border-t-0">
+<span class="inline-flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+          92% des sinistres couverts par caution
+        </span>
+<button class="text-secondary hover:underline font-label-md text-label-md" type="button">
+          Historique pannes
+        </button>
+</div>
+</div>
+</section>
+<!-- TABLEAU RÉCAPITULATIF DES DERNIERS RAPPORTS GÉNÉRÉS -->
+<section class="rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-lg shadow-lg">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">archive</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+            Derniers Rapports et Bilans Générés
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Téléchargez directement les livrables d'audit technique, financier et réglementaire
+        </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+          Tous les types
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+          Archives 2024
+        </button>
+</div>
+</div>
+<!-- Table Responsive -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/60 text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-space-md rounded-l-lg">Intitulé du document</th>
+<th class="py-3 px-space-md">Format</th>
+<th class="py-3 px-space-md">Taille</th>
+<th class="py-3 px-space-md">Date de Génération</th>
+<th class="py-3 px-space-md">Auteur / Système</th>
+<th class="py-3 px-space-md text-right rounded-r-lg">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 font-body-md text-body-md">
+<!-- Ligne 1 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<span class="p-2 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Bilan Événementiel Mai 2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Synthèse des tournées, festivals et rentabilité opérationnelle</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary-container/20 text-primary uppercase font-bold">PDF HQ</span>
+</td>
+<td class="py-3.5 px-space-md font-mono-code text-on-surface-variant">14.8 Mo</td>
+<td class="py-3.5 px-space-md">
+<span class="text-on-surface block">01 Juin 2025</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">08:30:14</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Alexandre Mercier</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-secondary hover:bg-secondary/15 font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Télécharger</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 2 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<span class="p-2 rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[18px]">query_stats</span>
+</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Audit d'usure des projecteurs robotisés Q1</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Heures lampes, calibration optique et usure moteurs pas-à-pas</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex px-2 py-0.5 rounded font-mono-code text-[11px] bg-secondary-container/20 text-secondary uppercase font-bold">XLSX</span>
+</td>
+<td class="py-3.5 px-space-md font-mono-code text-on-surface-variant">4.2 Mo</td>
+<td class="py-3.5 px-space-md">
+<span class="text-on-surface block">15 Avr 2025</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">14:12:00</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Télémétrie Auto</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-secondary hover:bg-secondary/15 font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Télécharger</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 3 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<span class="p-2 rounded-lg bg-error-container/20 text-error">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Rapport de sinistralité et cautions 2024-2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Suivi des retenues financières, litiges prestataires et réparations</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex px-2 py-0.5 rounded font-mono-code text-[11px] bg-error-container/20 text-error uppercase font-bold">PDF</span>
+</td>
+<td class="py-3.5 px-space-md font-mono-code text-on-surface-variant">8.9 Mo</td>
+<td class="py-3.5 px-space-md">
+<span class="text-on-surface block">02 Avr 2025</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">17:45:22</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Service Juridique</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-secondary hover:bg-secondary/15 font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Télécharger</span>
+</button>
+</td>
+</tr>
+<!-- Ligne 4 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<span class="p-2 rounded-lg bg-tertiary-container/20 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Inventaire valorisé pour assurances (Parc Complet)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Déclaration annuelle de valeur à neuf et valeur résiduelle certifiée</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex px-2 py-0.5 rounded font-mono-code text-[11px] bg-tertiary-container/20 text-tertiary uppercase font-bold">CSV / ZIP</span>
+</td>
+<td class="py-3.5 px-space-md font-mono-code text-on-surface-variant">22.4 Mo</td>
+<td class="py-3.5 px-space-md">
+<span class="text-on-surface block">10 Janv 2025</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">09:05:50</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">Audit Bureau Veritas</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-secondary hover:bg-secondary/15 font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Télécharger</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pied de tableau avec pagination et rappel de sécurité -->
+<div class="mt-space-md pt-space-xs flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">encrypted</span>
+<span class="font-body-sm text-body-sm">Tous les exports sont signés cryptographiquement sous le nœud <span class="font-mono-code text-secondary font-bold">PROD-FR01</span>.</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-2 font-mono-code text-body-sm text-on-surface">Page 1 sur 6</span>
+<button class="p-1 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Micro-interactions simples pour la sélection des filtres
+  document.querySelectorAll('section button').forEach(button => {
+    button.addEventListener('click', function(e) {
+      if (this.textContent.includes('Actualiser')) {
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.classList.add('animate-spin');
+          setTimeout(() => icon.classList.remove('animate-spin'), 1000);
+        }
+      }
+    });
+  });
+</script></main></div></body></html>

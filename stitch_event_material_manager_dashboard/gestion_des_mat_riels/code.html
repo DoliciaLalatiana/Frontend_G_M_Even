@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#2d344b","tertiary-fixed-dim":"#69d3ff","primary-fixed":"#eaddff","on-tertiary":"#003546","on-secondary-container":"#00545a","tertiary-container":"#00789a","on-tertiary-container":"#e6f5ff","surface-container-low":"#141a31","on-secondary":"#00363b","surface-container":"#181f35","error":"#ffb4ab","error-container":"#93000a","primary-container":"#8054d8","surface-tint":"#d2bcff","primary-fixed-dim":"#d2bcff","outline-variant":"#4a4453","primary":"#d2bcff","on-primary-container":"#f9f1ff","surface-container-high":"#222940","outline":"#958e9f","secondary-container":"#00cfde","inverse-on-surface":"#292f47","inverse-primary":"#6f41c6","on-background":"#dce1ff","tertiary-fixed":"#bee9ff","surface-container-highest":"#2d344b","on-surface-variant":"#ccc3d5","secondary":"#48ebfb","on-primary":"#3e008e","on-secondary-fixed-variant":"#004f55","surface-container-lowest":"#060d23","on-tertiary-fixed":"#001f2a","on-secondary-fixed":"#002023","on-error-container":"#ffdad6","background":"#0b1228","surface-bright":"#323850","tertiary":"#69d3ff","inverse-surface":"#dce1ff","on-primary-fixed":"#25005a","surface-dim":"#0b1228","secondary-fixed":"#84f3ff","surface":"#0b1228","on-surface":"#dce1ff","on-error":"#690005","on-tertiary-fixed-variant":"#004d64","on-primary-fixed-variant":"#5624ac","secondary-fixed-dim":"#2adae9"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"2rem",gutter:"1.25rem","margin-mobile":"1rem","space-xl":"2.25rem","gutter-mobile":"0.75rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem"},fontFamily:{"label-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"mono-code":["JetBrains Mono"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"label-lg":["13px",{lineHeight:"18px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-xl-mobile":["26px",{lineHeight:"34px",fontWeight:"700"}],"label-md":["11px",{lineHeight:"16px",fontWeight:"600"}],"body-md":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"mono-code":["12px",{lineHeight:"16px",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface min-h-screen relative selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute -top-40 left-20 w-[540px] h-[540px] bg-primary-container/15 rounded-full blur-[128px]"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-secondary-container/10 rounded-full blur-[140px]"></div><div class="absolute bottom-10 right-10 w-[600px] h-[600px] bg-tertiary-container/15 rounded-full blur-[160px]"></div></div><aside class="fixed left-0 top-0 h-full w-64 z-50 flex flex-col bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0_8px_32px_0_rgba(4,9,24,0.37)]"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/15"><div class="flex items-center gap-space-sm"><img alt="EVENT MANAGER Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uw0uOlIN49xmd4rT6ZeArRc6TD1wLEhzrKzV4mwbRyVpiHqpJIkSoGDomc5BJFNOdtViL83_WD-LYiqET9R5hcpxE4v6DZQDG1BH8wG784vrelhCGJPPtPIW9ohHJiqFh7keCRdi-jgX1MuzMJ3slC3I66VvFIdv5rXZBnA3-PQ_uPlWXXYHOzjHMWiLRQFqktiO5MNyluQ0tF7Bwhxnjh5naELg4t8mSkYh-R9awxWQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface leading-none">EVENT MANAGER</span><span class="font-label-md text-label-md text-secondary tracking-widest uppercase mt-0.5">Logistics Core</span></div></div><div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#48ebfb]"></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-1.5 rounded-lg bg-surface-container/60 border border-outline-variant/20 flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Parc Opérationnel</span><span class="font-mono-code text-mono-code text-secondary font-bold">PROD-FR01</span></div></div><nav class="flex-1 px-space-sm py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-[0_0_16px_rgba(128,84,216,0.35)]"><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Tableau de bord</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="materiels" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Matériels</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span class="font-body-md text-body-md">Catégories</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="evenements" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-body-md text-body-md">Événements</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="emprunts" href="#"><span class="material-symbols-outlined text-[20px]">north_east</span><span class="font-body-md text-body-md">Emprunts</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="retours" href="#"><span class="material-symbols-outlined text-[20px]">south_west</span><span class="font-body-md text-body-md">Retours</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reservations" href="#"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="font-body-md text-body-md">Réservations</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="utilisateurs" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Utilisateurs</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="rapports-stats" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Rapports &amp; Stats</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Paramètres</span></a></nav><div class="p-space-md border-t border-outline-variant/15"><div class="rounded-xl p-space-sm bg-surface-container-high/40 border border-outline-variant/20 flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">cell_tower</span><span class="font-label-md text-label-md text-on-surface-variant">Nœud Télémétrie</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full font-mono-code text-[10px] bg-secondary/15 text-secondary border border-secondary/30">EN LIGNE</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen relative z-10"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/20 z-40 px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface transition-colors cursor-pointer">Hub</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-secondary font-semibold">Inventaire Événementiel</span></div></div><div class="flex-1 max-w-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-14 py-1.5 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/40 transition-all" placeholder="Rechercher réf, QR, kit, salle, technicien..." type="text"/><kbd class="absolute right-2.5 px-1.5 py-0.5 rounded font-mono-code text-[10px] bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">⌘K</kbd></div></div><div class="flex items-center gap-space-md shrink-0"><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-inverse-primary border border-primary/30 text-on-primary-container font-label-lg text-label-lg shadow-[0_0_14px_rgba(128,84,216,0.35)] hover:shadow-[0_0_20px_rgba(72,235,251,0.45)] hover:border-secondary/60 transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Action rapide</span></button><button aria-label="Notifications" class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/60 transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-surface-container-lowest shadow-[0_0_8px_#48ebfb]"></span></button><div class="h-8 w-px bg-outline-variant/20"></div><div class="flex items-center gap-space-sm pl-1"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3M13MZ36D9d7Qt7bwqsHbydkPhuohHUtBzeGGx4ZjnhHTjwBs8uVpZrexZE3uSq7soA9CUQSKS1FyzZnqrNnUmWQb16oEkVJeJiq6FZFkVZz6L2baXC5Az1J8on2M27xVTpqmE9dadMskB_rDyLv-YN9ZFBxOeeOjnjrlM-ROHyD5qdarEnIdEcqlioJP-zZ4iAUknhVDlFkdc3RMm7gI0d-Yq5IJnMWJGOljXCW"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary ring-1 ring-background"></span></div><div class="flex flex-col text-left"><span class="font-label-lg text-label-lg text-on-surface leading-tight">Alexandre Mercier</span><div class="flex items-center gap-1"><span class="font-label-md text-label-md text-secondary font-medium">Régisseur Général</span><span class="inline-flex px-1 rounded font-mono-code text-[9px] bg-primary-container/25 text-primary border border-primary/30 uppercase">Admin</span></div></div></div></div></header><main class="relative pt-16 w-full flex-1 px-gutter py-margin bg-transparent"><div class="flex flex-col w-full space-y-space-lg">
+<!-- Atmospheric Glow Accents (Contained) -->
+<div class="relative w-full">
+<div class="absolute -top-12 left-1/4 w-96 h-28 bg-primary-container/20 rounded-full blur-[90px] pointer-events-none"></div>
+<div class="absolute -top-10 right-1/3 w-80 h-24 bg-secondary/15 rounded-full blur-[80px] pointer-events-none"></div>
+<!-- Header Section: Telemetry Overview & Title -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-mono-code text-mono-code text-secondary tracking-widest uppercase">REGISTRE OPÉRATIONNEL</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary shadow-sm"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">FLOTTE ACTIVE • CYCLE 2025</span>
+</div>
+<div class="flex items-baseline gap-space-sm flex-wrap">
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Inventaire du Matériel</h1>
+<span class="font-mono-code text-mono-code text-primary-fixed bg-surface-container-high/80 px-2.5 py-1 rounded-full shadow-sm backdrop-blur-md">
+            1 480 références actives
+          </span>
+</div>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-high/60 hover:bg-surface-container-highest/70 text-on-surface font-label-lg text-label-lg backdrop-blur-md shadow-sm transition-all duration-200 active:scale-95" id="exportBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">download</span>
+<span>Exporter CSV / PDF</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-lg py-2.5 rounded-xl bg-gradient-to-r from-primary-container via-inverse-primary to-secondary text-on-primary-container font-label-lg text-label-lg shadow-lg hover:shadow-xl hover:shadow-secondary/20 transition-all duration-300 active:scale-95" id="openModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="tracking-wide">+ Ajouter un matériel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Telemetry Strip & Quick Metrics -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Disponibilité Flotte</p>
+<p class="font-headline-lg text-headline-lg text-secondary font-bold font-mono-code mt-0.5">82.4%</p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1 220 dispo sur site</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-high/60 flex items-center justify-center text-secondary">
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-secondary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="82.4, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">En Transit / Prêt</p>
+<p class="font-headline-lg text-headline-lg text-primary font-bold font-mono-code mt-0.5">214</p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sur 9 événements en cours</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Contrôle / Révision</p>
+<p class="font-headline-lg text-headline-lg text-error font-bold font-mono-code mt-0.5">38</p>
+<span class="font-body-sm text-body-sm text-error/80">3 urgences techniques</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[24px]">build_circle</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-xl shadow-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Valeur Assurée</p>
+<p class="font-headline-lg text-headline-lg text-on-surface font-bold font-mono-code mt-0.5">2.41M€</p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">100% audité RFID</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-high/60 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Action Toolbar & Interactive Filters -->
+<div class="p-space-md rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl shadow-xl space-y-space-md">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
+<!-- Search Input -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-11 pr-24 py-2.5 rounded-xl bg-surface-container-highest/40 focus:bg-surface-container-highest/70 text-on-surface placeholder:text-on-surface-variant/60 font-body-md text-body-md outline-none transition-all duration-200" id="searchInput" placeholder="Rechercher par référence, marque, modèle, puce..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded font-mono-code text-[10px] bg-surface-container-high text-on-surface-variant">⌘F</kbd>
+</div>
+</div>
+<!-- Categories Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full appearance-none pl-3.5 pr-8 py-2.5 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest/60 text-on-surface font-body-sm text-body-sm outline-none cursor-pointer transition-colors">
+<option class="bg-surface-container" value="">Toutes Catégories</option>
+<option class="bg-surface-container" value="sonorisation">Sonorisation (Line Array, Micros)</option>
+<option class="bg-surface-container" value="eclairage">Éclairage (Moving Heads, Dimmers)</option>
+<option class="bg-surface-container" value="video">Vidéo &amp; Captation (LED, Optiques)</option>
+<option class="bg-surface-container" value="structure">Structure &amp; Levage (Ponts, Moteurs)</option>
+<option class="bg-surface-container" value="distribution">Distribution Électrique</option>
+<option class="bg-surface-container" value="mobilier">Mobilier Scénique &amp; Crash</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full appearance-none pl-3.5 pr-8 py-2.5 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest/60 text-on-surface font-body-sm text-body-sm outline-none cursor-pointer transition-colors">
+<option class="bg-surface-container" value="">Tous États</option>
+<option class="bg-surface-container" value="disponible">Disponible (Parc)</option>
+<option class="bg-surface-container" value="emprunte">Emprunté / Sur Scène</option>
+<option class="bg-surface-container" value="reserve">Réservé (Option posée)</option>
+<option class="bg-surface-container" value="maintenance">En Révision / SAV</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-on-surface-variant">tune</span>
+</div>
+<!-- Warehouse Filter -->
+<div class="md:col-span-2 relative">
+<select class="w-full appearance-none pl-3.5 pr-8 py-2.5 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest/60 text-on-surface font-body-sm text-body-sm outline-none cursor-pointer transition-colors">
+<option class="bg-surface-container" value="">Entrepôt / Zone</option>
+<option class="bg-surface-container" value="depot-nord">Dépôt Nord - Roissy (Zone A)</option>
+<option class="bg-surface-container" value="depot-sud">Dépôt Sud - Rungis (Zone B)</option>
+<option class="bg-surface-container" value="dock-mobile">Dock Mobile / Semi #04</option>
+<option class="bg-surface-container" value="lab-sav">Lab Technique SAV</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-on-surface-variant">warehouse</span>
+</div>
+<!-- Quick Reset / Views Toggle -->
+<div class="md:col-span-1 flex items-center justify-end gap-1">
+<button class="p-2 rounded-lg bg-surface-container-highest/30 hover:bg-surface-container-highest/70 text-on-surface-variant hover:text-on-surface transition-colors" title="Affichage Grille" type="button">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest/30 hover:bg-surface-container-highest/70 text-on-surface-variant hover:text-secondary transition-colors" title="Affichage Flight Cases" type="button">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+</button>
+</div>
+</div>
+<!-- Active filter tags -->
+<div class="flex items-center gap-2 flex-wrap pt-1 font-body-sm text-body-sm">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase">Filtres actifs :</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/20 text-secondary font-mono-code text-[11px] shadow-sm">
+        Parc : Roissy (Dépôt Nord)
+        <button class="hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/20 text-primary-fixed font-mono-code text-[11px] shadow-sm">
+        Santé != Hors-service
+        <button class="hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<button class="text-on-surface-variant hover:text-secondary text-body-sm transition-colors underline underline-offset-4 decoration-secondary/30 ml-2" type="button">
+        Réinitialiser tout
+      </button>
+</div>
+</div>
+<!-- Multi-select contextual banner (Shows count of checked assets) -->
+<div class="p-space-sm px-space-md rounded-xl bg-surface-container-highest/90 backdrop-blur-xl flex items-center justify-between shadow-lg transition-all duration-300" id="selectionBanner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">checklist</span>
+<span class="font-body-md text-body-md text-on-surface"><strong class="text-secondary font-mono-code">3</strong> matériels sélectionnés pour action groupée</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code</span>
+<span>Générer étiquettes QR</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+<span>Assigner à un événement</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-error-container/30 hover:bg-error-container text-error font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">build</span>
+<span>Basculer en maintenance</span>
+</button>
+</div>
+</div>
+<!-- Professional Ice Glass Data Table -->
+<div class="rounded-2xl bg-surface-container-low/75 backdrop-blur-2xl shadow-2xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<!-- Frosted Table Header -->
+<thead class="sticky top-0 z-20 bg-surface-container-high/90 backdrop-blur-xl">
+<tr class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">
+<th class="py-3.5 px-4 w-12 text-center">
+<input checked="" class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3.5 px-4">Matériel &amp; Spécifications</th>
+<th class="py-3.5 px-4">Réf. &amp; QR Tag</th>
+<th class="py-3.5 px-4">Catégorie</th>
+<th class="py-3.5 px-4 text-center">Qté Totale</th>
+<th class="py-3.5 px-4 w-44">Disponibilité</th>
+<th class="py-3.5 px-4">Emplacement</th>
+<th class="py-3.5 px-4">Santé / Diagnostic</th>
+<th class="py-3.5 px-4 text-right pr-6">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/30 font-body-md text-body-md">
+<!-- Row 1: Line Array Kara II -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-3.5 px-4 text-center">
+<input checked="" class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="High-end professional black line array modular stage speaker L-Acoustics Kara II sitting on an aluminum touring flight case in a dark backstage venue with neon cyan illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx9sZJyuR1xQnyjr68mPxxQ19Lce2q5bJLWKVN19U-H98LrTlO5K1pTM9LmF0IaPDWbu0IASG7tNBXCRprtMwjbfbWIQlh3e0xYHyvWicj-YG5oMz1f9Z4PKkjoVzBn9pwN-uIvqN2_BXT4Ii1NtcOY7iiDSrXwODLdinlNt2leGsww2yQV57sboOjeo0aJ9wfkdhQv-8NcLAngA-lMG2dYvpsSN6oNuw2w-DRaCvP"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">Kara II Enceinte Line-Array</span>
+<span class="material-symbols-outlined text-[16px] text-secondary" title="Flight case double vérifié">cases</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">L-Acoustics • WST Modulaire Bi-amplifié 110°</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-mono-code text-mono-code text-secondary font-bold">MAT-SON-0492</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">qr_code_2</span> RFID #8849-AC
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-md text-label-md bg-secondary-container/20 text-secondary backdrop-blur-md shadow-sm">
+                Sonorisation
+              </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">32</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">unités</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-secondary font-mono-code font-bold">24 dispo</span>
+<span class="text-on-surface-variant">75%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary to-primary" style="width: 75%"></div>
+</div>
+<span class="text-[10px] font-mono-code text-on-surface-variant block">8 réservés (Opéra Bastille)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shelves</span>
+<span class="font-body-sm text-body-sm"><strong class="font-semibold">Rack A-12</strong> • Dépôt Nord</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md bg-secondary/15 text-secondary shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                Bon état
+              </span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<div class="inline-flex items-center gap-1 bg-surface-container-high/40 p-1 rounded-xl shadow-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors" title="Voir la fiche" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors" title="Modifier" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-tertiary hover:bg-surface-container-highest transition-colors" title="Historique d'exploitation" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" title="Supprimer" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Moving Head Robe MegaPointe -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-3.5 px-4 text-center">
+<input checked="" class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Robe MegaPointe automated moving light projector with luminous fresnel glass lens casting deep indigo and cyan laser glare in an ultra-clean stage equipment warehouse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ1jhsmFwubc5cbgOF4-vNAMoXA6xYnnTCdEF3BkMbUf3FLBCAru7CebndwoBQOQIxmaWs1dxwNxgXFqrthzuNbphypK9DvVh8mXqXWqrIfRykX0sooeW3vrOcWDrTeit6eE9n15RkJzlL-iylZapJ_RIEcLnZD9f-MDvw3lf_8iXUPtbLa0ySxxlKufbqmAw-hrkNWNyZVDrT2_GQ42-i73cVojHEKtwfXu4GzX_P"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">MegaPointe Projecteur Hybride</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="Optique laser calibrée">bolt</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Robe Lighting • Beam/Spot/Wash 470W</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-mono-code text-mono-code text-secondary font-bold">MAT-LGT-1088</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">qr_code_2</span> RFID #9931-RB
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-md text-label-md bg-primary-container/25 text-primary-fixed backdrop-blur-md shadow-sm">
+                Éclairage
+              </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">48</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">unités</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-secondary font-mono-code font-bold">48 dispo</span>
+<span class="text-on-surface-variant">100%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-secondary" style="width: 100%"></div>
+</div>
+<span class="text-[10px] font-mono-code text-secondary block">Parc complet prêt dispatch</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shelves</span>
+<span class="font-body-sm text-body-sm"><strong class="font-semibold">Rack C-04</strong> • Dépôt Sud</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md bg-primary/20 text-primary-fixed shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Neuf (Reçu M-1)
+              </span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<div class="inline-flex items-center gap-1 bg-surface-container-high/40 p-1 rounded-xl shadow-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors" title="Voir la fiche" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors" title="Modifier" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-tertiary hover:bg-surface-container-highest transition-colors" title="Historique" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" title="Supprimer" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Console Audio Digico Quantum 338 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-3.5 px-4 text-center">
+<input checked="" class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="High-tech digital audio mixing console Digico Quantum with illuminated faders and multi-touch dark interface glass displays in an arena sound booth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8LctgN0qvv5I9tz16h0ZB9-BBWXe8Hb0jd_AgXFXu65YHK41bmUCwhPfUtc-VUs2iJE2dXQLf0FetbD8XS-1nK-Xmv6DUjGSTnm4ai1zty1MJ94mRF_MwFai7H5c2Sx3fV-EQpzkNv9Pv5M-27A5VaUAeVEBoExmu3ebWBBTucmCO7TMxN8ZhOcjHG-yUvHhktN0i-F07jdHQITG8xae894PwvTI4aULjLljtJW87"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">Quantum 338 Console Numérique</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary" title="Fibre Optocore intégrée">router</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">DiGiCo • 128 Canaux, 3x Écrans 17" Touch</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-mono-code text-mono-code text-secondary font-bold">MAT-SON-0114</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">qr_code_2</span> RFID #1142-DG
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-md text-label-md bg-secondary-container/20 text-secondary backdrop-blur-md shadow-sm">
+                Sonorisation
+              </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">4</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">consoles</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-tertiary font-mono-code font-bold">1 dispo</span>
+<span class="text-on-surface-variant">25%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-tertiary" style="width: 25%"></div>
+</div>
+<span class="text-[10px] font-mono-code text-primary-fixed block">3 en tournée internationale</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shelves</span>
+<span class="font-body-sm text-body-sm"><strong class="font-semibold">Case #02</strong> • Dépôt Nord</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md bg-secondary/15 text-secondary shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Bon état
+              </span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<div class="inline-flex items-center gap-1 bg-surface-container-high/40 p-1 rounded-xl shadow-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-tertiary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Panneau LED Absen Polaris PL2.5 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-3.5 px-4 text-center">
+<input class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="High density indoor outdoor LED video wall tile module with gold contact pins on black matte chassis in a stage rigging room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpKjiuAnKTpUKDTlDa8snN0fAWF-QhKhwkt4b83erB4-T1Fo26IphyiliBFvVP0iXtZz6cskJtx_N5pdGs9CwL4VZwgvtdK4yC7Aig_LbFhsAOY4ftP1NSzT5kyjwvs18cVXGykESVc3v_R5Wv4C_Ikot1SOtjTcvR1_yAyqyXnZfpRrfnmlUWZY6148cvR01pDL8g07iOB44V5y-RLMSPRbJHXDNqcyMSwYRGGVRN"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">Dalle Mur LED Polaris PL2.5</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary" title="Pitch 2.5mm Haute Fréquence">videocam</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Absen • 500x500mm IP65 Courbable ±7.5°</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-mono-code text-mono-code text-secondary font-bold">MAT-VID-2045</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">qr_code_2</span> RFID #4412-AB
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-md text-label-md bg-tertiary-container/30 text-tertiary-fixed backdrop-blur-md shadow-sm">
+                Vidéo Scénique
+              </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">160</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">dalles</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-secondary font-mono-code font-bold">96 dispo</span>
+<span class="text-on-surface-variant">60%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary to-tertiary" style="width: 60%"></div>
+</div>
+<span class="text-[10px] font-mono-code text-on-surface-variant block">64 sur Salon Automobile Paris</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shelves</span>
+<span class="font-body-sm text-body-sm"><strong class="font-semibold">Rack V-08</strong> • Dépôt Sud</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md bg-surface-variant text-on-surface-variant shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Contrôle requis
+              </span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<div class="inline-flex items-center gap-1 bg-surface-container-high/40 p-1 rounded-xl shadow-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-tertiary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Moteur de Levage Verlinde Stagemaker 1T -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="py-3.5 px-4 text-center">
+<input class="w-4 h-4 rounded bg-surface-container accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Electric chain hoist rigging motor Verlinde Stagemaker hanging with steel chains and safety load shackles under industrial trussing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrjfDsr8Sfrsap8bbjXjU-JDNFaRChDExhZlmrxF7aaX89Yc6U-r24tVVHDi0ifewRs8iN0MUO_UdZjW6v7tHKuqqxsIB12aFCcDnfqWtPBt-8R7w8kdAgCbBCaTFntkAvpakURPXBsGqWYgVCLxw-ZK3zb09kyRlbNbhmsMXJ29WCxm3Z-52R7cepzgK21TVILoRmtGMMAAgAbj8usIidUpc-VwacFMGkLEGkXnYI"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">Palan Électrique SR10 1000kg</span>
+<span class="material-symbols-outlined text-[16px] text-error" title="Épreuve décennale certifiée">gavel</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Stagemaker Verlinde • Double frein D8+ 24m</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-mono-code text-mono-code text-secondary font-bold">MAT-LEV-0081</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">qr_code_2</span> RFID #0081-VL
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-md text-label-md bg-surface-variant/80 text-on-surface-variant backdrop-blur-md shadow-sm">
+                Structure &amp; Levage
+              </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">24</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">moteurs</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-error font-mono-code font-bold">0 dispo</span>
+<span class="text-on-surface-variant">0%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-error" style="width: 0%"></div>
+</div>
+<span class="text-[10px] font-mono-code text-error block">20 déployés / 4 en révision</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shelves</span>
+<span class="font-body-sm text-body-sm"><strong class="font-semibold">Zone Lourde</strong> • Dépôt Nord</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md bg-error-container/30 text-error shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+                En révision annuelle
+              </span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<div class="inline-flex items-center gap-1 bg-surface-container-high/40 p-1 rounded-xl shadow-sm">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-tertiary hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Manifest Status Bar -->
+<div class="p-space-md bg-surface-container-high/60 backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Affichage</span>
+<span class="font-mono-code text-mono-code font-bold text-secondary">1 à 5</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">sur <strong>1 480</strong> matériels</span>
+<div class="h-4 w-px bg-surface-variant mx-1"></div>
+<label class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<span>Lignes :</span>
+<select class="rounded-lg bg-surface-container-highest/60 text-on-surface px-2 py-1 text-body-sm outline-none cursor-pointer">
+<option>5</option>
+<option selected="">20</option>
+<option>50</option>
+<option>100</option>
+</select>
+</label>
+</div>
+<!-- Pagination Nav Controls -->
+<div class="flex items-center gap-1.5">
+<button class="p-2 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-colors" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">first_page</span>
+</button>
+<button class="p-2 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface disabled:opacity-30 transition-colors" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-1 px-1">
+<button class="w-8 h-8 rounded-xl bg-primary-container text-on-primary-container font-mono-code text-mono-code font-bold shadow-md shadow-primary-container/30" type="button">1</button>
+<button class="w-8 h-8 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface font-mono-code text-mono-code transition-colors" type="button">2</button>
+<button class="w-8 h-8 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface font-mono-code text-mono-code transition-colors" type="button">3</button>
+<span class="px-1 text-on-surface-variant font-mono-code">...</span>
+<button class="w-8 h-8 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface font-mono-code text-mono-code transition-colors" type="button">74</button>
+</div>
+<button class="p-2 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="p-2 rounded-xl bg-surface-container-highest/40 hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">last_page</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Flight Case / Warehouse Visual Layout Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- Dispatch Rack Visualizer (Bento Item 1) -->
+<div class="lg:col-span-2 p-space-lg rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl shadow-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">view_in_ar</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Planification Baies &amp; Flight Cases Actifs</h2>
+</div>
+<span class="font-mono-code text-mono-code text-secondary bg-secondary-container/20 px-2 py-0.5 rounded-full">DOCK NORD - QUAI #03</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Topologie de chargement immédiat pour le convoi "Festival Lumières 2025" - Départ prévu 18:30.</p>
+</div>
+<!-- Flight Case Visual Matrix -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm my-space-md">
+<div class="p-space-sm rounded-xl bg-surface-container-high/80 border-t-2 border-secondary shadow-md space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-mono-code text-mono-code font-bold text-secondary">FC-LGT-01</span>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-sm"></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">2x Robe MegaPointe</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 100%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block">Scellé • 84 kg</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-high/80 border-t-2 border-secondary shadow-md space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-mono-code text-mono-code font-bold text-secondary">FC-LGT-02</span>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-sm"></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">2x Robe MegaPointe</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 100%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block">Scellé • 84 kg</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-high/80 border-t-2 border-primary shadow-md space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-mono-code text-mono-code font-bold text-primary">FC-SON-09</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">4x L-Acoustics Kara II</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 75%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block">En contrôle RFID</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-high/40 border-t-2 border-surface-variant shadow-md space-y-2 opacity-60">
+<div class="flex justify-between items-center">
+<span class="font-mono-code text-mono-code font-bold text-on-surface-variant">FC-CAB-12</span>
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate">Multipaires Socapex</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-surface-variant h-full" style="width: 30%"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block">En attente bobine</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-md text-label-md text-on-surface-variant">
+<span>Capacité baie camion semi-remorque : <strong>28/34 m³ occupés</strong></span>
+<a class="text-secondary hover:underline flex items-center gap-1" href="#">Voir plan de chargement complet <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a>
+</div>
+</div>
+<!-- Power & Signal Telemetry Gauge (Bento Item 2) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl shadow-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">bolt</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Charge DMX &amp; Puissance</h2>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-md animate-pulse"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Estimation parc affecté pour ce week-end</p>
+</div>
+<!-- Dynamic Visual Bars -->
+<div class="space-y-space-md my-space-md">
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface">Puissance Électrique Scénique</span>
+<span class="font-mono-code text-secondary font-bold">78 kW / 120 kVA</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary to-primary" style="width: 65%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface">Univers Art-Net / sACN</span>
+<span class="font-mono-code text-primary font-bold">14 / 16 Univers</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 87%"></div>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-high/60 flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+          Génératrice Dépôt Sud calibrée à 85% de charge nominale sans surchauffe.
+        </p>
+</div>
+</div>
+</div>
+<!-- Embedded Quick Modal: "Ajouter un Matériel" (Triggerable / Functional Overlay) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-surface-container-lowest/80 backdrop-blur-md hidden transition-all duration-300" id="addMaterialModal">
+<div class="relative w-full max-w-3xl rounded-2xl bg-surface-container-low/95 backdrop-blur-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-surface-container-high/80 backdrop-blur-xl flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Nouveau Matériel au Parc</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enregistrement d'équipement • Indexation RFID instantanée</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Modal Tabs Header -->
+<div class="px-space-lg pt-space-xs bg-surface-container-high/40 flex items-center gap-space-md font-label-md text-label-md">
+<button class="pb-3 text-secondary border-b-2 border-secondary font-bold flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Informations Générales</span>
+</button>
+<button class="pb-3 text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">tag</span>
+<span>N° Série &amp; Stock</span>
+</button>
+<button class="pb-3 text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Spécifications Techniques</span>
+</button>
+<button class="pb-3 text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">image</span>
+<span>Médias &amp; Manuels</span>
+</button>
+</div>
+<!-- Modal Body Form -->
+<form class="p-space-lg space-y-space-md max-h-[716px] overflow-y-auto" id="materialForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Désignation Commerciale *</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md outline-none" placeholder="ex: Enceinte Line-Array Kara II" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Marque &amp; Fabricant *</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md outline-none" placeholder="ex: L-Acoustics, Robe, Yamaha..." required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Catégorie Principale *</label>
+<select class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface font-body-md text-body-md outline-none cursor-pointer">
+<option class="bg-surface-container">Sonorisation • Enceintes &amp; Amplification</option>
+<option class="bg-surface-container">Éclairage • Projecteurs Motorisés &amp; DMX</option>
+<option class="bg-surface-container">Vidéo • Murs LED &amp; Caméras Broadcast</option>
+<option class="bg-surface-container">Structure • Ponts Alu &amp; Moteurs de levage</option>
+<option class="bg-surface-container">Câblage • Cuivre &amp; Fibre Optique</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Emplacement Initial de Stockage</label>
+<select class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface font-body-md text-body-md outline-none cursor-pointer">
+<option class="bg-surface-container">Dépôt Nord - Roissy (Zone A • Racks Son)</option>
+<option class="bg-surface-container">Dépôt Nord - Roissy (Zone B • Éclairage)</option>
+<option class="bg-surface-container">Dépôt Sud - Rungis (Zone C • Structure &amp; Énergie)</option>
+<option class="bg-surface-container">Atelier SAV • Laboratoire de maintenance</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">Quantité à Intégrer</label>
+<div class="flex items-center gap-2">
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface font-mono-code text-body-md outline-none" min="1" type="number" value="12"/>
+<span class="font-label-md text-label-md text-on-surface-variant shrink-0">Conditionné par :</span>
+<select class="rounded-xl bg-surface-container-highest/50 text-on-surface px-2.5 py-2.5 text-body-sm outline-none">
+<option>Flight case x2</option>
+<option>Flight case x4</option>
+<option>Unité nue</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase">État Initial du Matériel</label>
+<select class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-highest/50 text-on-surface font-body-md text-body-md outline-none cursor-pointer">
+<option class="bg-surface-container">Neuf • Sortie d'usine (Garantie active)</option>
+<option class="bg-surface-container">Bon état • Reconditionné testé</option>
+<option class="bg-surface-container">Occasion vérifiée</option>
+<option class="bg-surface-container">Contrôle technique requis avant départ</option>
+</select>
+</div>
+</div>
+<!-- Technical Telemetry Offsets -->
+<div class="p-space-md rounded-xl bg-surface-container-high/40 space-y-space-sm">
+<span class="font-label-md text-label-md text-secondary uppercase font-bold tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">qr_code</span> Télémétrie Logistique &amp; Identification
+          </span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div>
+<label class="text-[11px] text-on-surface-variant block mb-1">Préfixe Référence</label>
+<input class="w-full px-3 py-1.5 rounded-lg bg-surface-container-highest/60 text-secondary font-mono-code text-mono-code outline-none" type="text" value="MAT-SON-0493"/>
+</div>
+<div>
+<label class="text-[11px] text-on-surface-variant block mb-1">Poids Unitaire (kg)</label>
+<input class="w-full px-3 py-1.5 rounded-lg bg-surface-container-highest/60 text-on-surface font-mono-code text-mono-code outline-none" type="text" value="26.0 kg"/>
+</div>
+<div>
+<label class="text-[11px] text-on-surface-variant block mb-1">Puce RFID Associée</label>
+<input class="w-full px-3 py-1.5 rounded-lg bg-surface-container-highest/60 text-on-surface font-mono-code text-mono-code outline-none" type="text" value="AUTO-ASSIGN-RFID"/>
+</div>
+</div>
+</div>
+<!-- Media Upload Zone -->
+<div class="p-space-md rounded-xl bg-surface-container-high/30 border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center text-center py-6 group hover:border-secondary/50 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">cloud_upload</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Glissez-déposez les photos d'identification ou fiches techniques</p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">PNG, JPG, PDF techniques jusqu'à 25 Mo (Scan QR auto)</span>
+</div>
+<!-- Modal Footer Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-lg text-label-lg transition-colors" id="cancelModalBtn" type="button">
+            Annuler
+          </button>
+<button class="px-space-lg py-2.5 rounded-xl bg-gradient-to-r from-primary-container via-inverse-primary to-secondary text-on-primary-container font-label-lg text-label-lg shadow-lg hover:shadow-xl hover:shadow-secondary/20 transition-all" type="submit">
+            Enregistrer dans l'inventaire
+          </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Modal toggle interaction
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelModalBtn');
+    const modal = document.getElementById('addMaterialModal');
+    const form = document.getElementById('materialForm');
+
+    function toggleModal(show) {
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleModal(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleModal(false));
+    if (cancelBtn) cancelBtn.addEventListener('click', () => toggleModal(false));
+
+    // Close on outer backdrop click
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) toggleModal(false);
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        toggleModal(false);
+      });
+    }
+
+    // Interactive Search Feedback
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+
+    // Keyboard shortcut CMD+K or CMD+F
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
+        e.preventDefault();
+        if (searchInput) searchInput.focus();
+      }
+    });
+  })();
+</script></main></div></body></html>
