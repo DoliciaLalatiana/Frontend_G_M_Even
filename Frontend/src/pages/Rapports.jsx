@@ -181,12 +181,12 @@ const Rapports = () => {
     setFormOpen(true)
   }
 
-  const generateReport = (format, label = 'Bilan du parc') => {
+  const generateReport = async (format, label = 'Bilan du parc') => {
     const auteur =
       utilisateurs.find((item) => item.role === 'Administrateur')?.nom ||
       utilisateurs[0]?.nom ||
       'Système'
-    const rapport = addRapport({
+    const rapport = await addRapport({
       titre: `${label} — ${formatMonth()}`,
       type: format === 'CSV' ? 'Inventaire' : 'Performance',
       format,
@@ -196,7 +196,7 @@ const Rapports = () => {
     })
     pushToast({
       title: 'Rapport généré',
-      message: `${rapport.titre} a été ajouté aux archives (${format}).`,
+      message: `${rapport?.titre || label} a été ajouté aux archives (${format}).`,
     })
   }
 
@@ -228,7 +228,7 @@ const Rapports = () => {
     )
     const csv = `\uFEFF${[headers.map(escapeCsv).join(';'), ...lines].join('\r\n')}`
     downloadFile(csv, `parc-materiel-${todayISO()}.csv`, 'text/csv;charset=utf-8')
-    generateReport('CSV', 'Export brut du parc')
+    void generateReport('CSV', 'Export brut du parc')
   }
 
   const downloadReport = (rapport) => {
@@ -250,11 +250,15 @@ const Rapports = () => {
       tone: 'danger',
     })
     if (!ok) return
-    deleteRapport(rapport.id)
+    const result = await deleteRapport(rapport.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Suppression impossible', message: result?.message || "Les rapports sont conservés dans l'historique.", type: 'warning' })
+      return
+    }
     pushToast({ title: 'Rapport supprimé', message: 'Le livrable a été retiré de l’historique.' })
   }
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!draft.titre.trim()) next.titre = 'Le titre du rapport est requis.'
@@ -265,7 +269,7 @@ const Rapports = () => {
       utilisateurs.find((item) => item.role === 'Administrateur')?.nom ||
       utilisateurs[0]?.nom ||
       'Système'
-    addRapport({
+    await addRapport({
       titre: draft.titre.trim(),
       type: draft.type,
       format: draft.format,

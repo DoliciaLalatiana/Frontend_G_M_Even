@@ -285,7 +285,7 @@ const Reservations = () => {
         : [...current.materielIds, materielId],
     }))
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!draft.client.trim()) next.client = 'Renseignez le client.'
@@ -304,11 +304,11 @@ const Reservations = () => {
       client: draft.client.trim(),
       evenementNom: draft.evenementNom.trim(),
       lieu: draft.lieu.trim(),
-      notes: draft.notes.trim(),
+      notes: (draft.notes || '').trim(),
     }
-    const result = editingId ? updateReservation(editingId, payload) : addReservation(payload)
-    if (!result.ok) {
-      pushToast({ title: 'Réservation impossible', message: result.message, type: 'error' })
+    const result = editingId ? await updateReservation(editingId, payload) : await addReservation(payload)
+    if (!result?.ok) {
+      pushToast({ title: 'Réservation impossible', message: result?.message || 'Erreur serveur.', type: 'error' })
       return
     }
 
@@ -328,7 +328,11 @@ const Reservations = () => {
       tone: 'warning',
     })
     if (!ok) return
-    cancelReservation(reservation.id)
+    const result = await cancelReservation(reservation.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Annulation impossible', message: result?.message || 'Erreur serveur.', type: 'error' })
+      return
+    }
     pushToast({ title: 'Réservation annulée', message: reservation.reference, type: 'warning' })
   }
 
@@ -341,7 +345,11 @@ const Reservations = () => {
       tone: 'danger',
     })
     if (!ok) return
-    deleteReservation(reservation.id)
+    const result = await deleteReservation(reservation.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Suppression impossible', message: result?.message || 'Les réservations sont conservées pour audit.', type: 'warning' })
+      return
+    }
     if (detailId === reservation.id) setDetailId(null)
     pushToast({ title: 'Réservation supprimée', message: reservation.reference, type: 'warning' })
   }

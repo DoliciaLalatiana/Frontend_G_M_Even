@@ -181,7 +181,7 @@ const Evenements = () => {
         : [...current.materielIds, id],
     }))
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!draft.nom.trim()) next.nom = 'Le nom de l’événement est requis.'
@@ -205,11 +205,14 @@ const Evenements = () => {
       responsable: responsable?.nom || '',
     }
 
+    const result = editing ? await updateEvenement(editing.id, payload) : await addEvenement(payload)
+    if (result?.ok === false) {
+      pushToast({ title: 'Enregistrement impossible', message: result.message, type: 'error' })
+      return
+    }
     if (editing) {
-      updateEvenement(editing.id, payload)
       pushToast({ title: 'Événement mis à jour', message: `${payload.nom} a été enregistré.` })
     } else {
-      addEvenement(payload)
       pushToast({ title: 'Événement créé', message: `${payload.nom} est ajouté au planning.` })
     }
     setFormOpen(false)
@@ -222,9 +225,9 @@ const Evenements = () => {
       confirmLabel: 'Supprimer',
     })
     if (!ok) return
-    const result = deleteEvenement(evenement.id)
-    if (!result.ok) {
-      pushToast({ title: 'Suppression impossible', message: result.message, type: 'error' })
+    const result = await deleteEvenement(evenement.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Suppression impossible', message: result?.message, type: 'error' })
       return
     }
     setDetail(null)

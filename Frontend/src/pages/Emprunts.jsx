@@ -204,7 +204,7 @@ const Emprunts = () => {
       lignes: current.lignes.filter((ligne) => ligne.materielId !== materielId),
     }))
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!draft.emprunteurId) next.emprunteurId = 'Sélectionnez un emprunteur.'
@@ -217,15 +217,17 @@ const Emprunts = () => {
     ) {
       next.dateRetourPrevue = 'La date de retour doit suivre la date de sortie.'
     }
-    if (!draft.lignes.length) next.lignes = 'Ajoutez au moins un matériel au bon de sortie.'
-    draft.lignes.forEach((ligne) => {
-      const max = availableFor(ligne.materielId)
-      if (Number(ligne.quantite) <= 0) next.lignes = 'Les quantités doivent être supérieures à 0.'
-      else if (Number(ligne.quantite) > max) {
-        const nom = materiels.find((item) => item.id === ligne.materielId)?.nom
-        next.lignes = `Stock insuffisant pour ${nom} : ${max} maximum.`
-      }
-    })
+    if (!editing && !draft.lignes.length) next.lignes = 'Ajoutez au moins un matériel au bon de sortie.'
+    if (!editing) {
+      draft.lignes.forEach((ligne) => {
+        const max = availableFor(ligne.materielId)
+        if (Number(ligne.quantite) <= 0) next.lignes = 'Les quantités doivent être supérieures à 0.'
+        else if (Number(ligne.quantite) > max) {
+          const nom = materiels.find((item) => item.id === ligne.materielId)?.nom
+          next.lignes = `Stock insuffisant pour ${nom} : ${max} maximum.`
+        }
+      })
+    }
     setErrors(next)
     if (Object.keys(next).length) return
 
@@ -235,21 +237,21 @@ const Emprunts = () => {
         materielId: ligne.materielId,
         quantite: Number(ligne.quantite),
       })),
-      notes: draft.notes.trim(),
+      notes: (draft.notes || '').trim(),
     }
 
-    const result = editing ? updateEmprunt(editing.id, payload) : createEmprunt(payload)
-    if (!result.ok) {
-      pushToast({ title: 'Enregistrement impossible', message: result.message, type: 'error' })
+    const result = editing ? await updateEmprunt(editing.id, payload) : await createEmprunt(payload)
+    if (!result?.ok) {
+      pushToast({ title: 'Enregistrement impossible', message: result?.message || 'Erreur serveur.', type: 'error' })
       return
     }
 
     if (editing) {
-      pushToast({ title: 'Emprunt mis à jour', message: 'Le bon de sortie a été actualisé.' })
+      pushToast({ title: 'Emprunt mis à jour', message: 'Le bon de sortie a été actualisé. Les lignes existantes ne sont pas modifiables.' })
     } else {
       pushToast({
         title: 'Emprunt créé',
-        message: `${result.emprunt.reference} · ${payload.lignes.length} référence(s) sorties du stock.`,
+        message: `${result.emprunt?.reference || ''} · ${payload.lignes.length} référence(s) sorties du stock.`,
       })
     }
     setFormOpen(false)
@@ -539,32 +541,38 @@ const Emprunts = () => {
               <span className="form-section__num">02</span>
               <div>
                 <div className="form-section__title">Matériel du bon de sortie</div>
-                <div className="form-section__hint">Seules les quantités disponibles peuvent être engagées.</div>
+                <div className="form-section__hint">
+                  {editing
+                    ? "Les lignes d’un emprunt existant ne sont pas modifiables. Enregistrez un retour ou créez un nouvel emprunt."
+                    : "Seules les quantités disponibles peuvent être engagées."}
+                </div>
               </div>
             </div>
 
-            <div className="line-editor__add">
-              <Field label="Ajouter un matériel" htmlFor="emp-add" className="span-full" error={errors.lignes}>
-                <select
-                  id="emp-add"
-                  value={newMaterielId}
-                  onChange={(event) => setNewMaterielId(event.target.value)}
-                >
-                  <option value="">Sélectionner un matériel…</option>
-                  {materiels
-                    .filter((item) => availableFor(item.id) > 0)
-                    .map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {item.nom} · {availableFor(item.id)} dispo
-                      </option>
-                    ))}
-                </select>
-              </Field>
-              <button type="button" className="btn btn-secondary" onClick={addLine} disabled={!newMaterielId}>
-                <Plus size={14} />
-                Ajouter
-              </button>
-            </div>
+            {!editing && (
+              <div className="line-editor__add">
+                <Field label="Ajouter un matériel" htmlFor="emp-add" className="span-full" error={errors.lignes}>
+                  <select
+                    id="emp-add"
+                    value={newMaterielId}
+                    onChange={(event) => setNewMaterielId(event.target.value)}
+                  >
+                    <option value="">Sélectionner un matériel…</option>
+                    {materiels
+                      .filter((item) => availableFor(item.id) > 0)
+                      .map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.nom} · {availableFor(item.id)} dispo
+                        </option>
+                      ))}
+                  </select>
+                </Field>
+                <button type="button" className="btn btn-secondary" onClick={addLine} disabled={!newMaterielId}>
+                  <Plus size={14} />
+                  Ajouter
+                </button>
+              </div>
+            )}
 
             <div className="lines-editor">
               {draft.lignes.map((ligne) => {
@@ -576,7 +584,7 @@ const Emprunts = () => {
                     <div className="line-editor__info">
                       <div className="line-editor__name">{materiel.nom}</div>
                       <div className="line-editor__meta">
-                        {materiel.reference} · max {max}
+                        {materiel.reference}{!editing ? ` · max ${max}` : ''}
                       </div>
                     </div>
                     <input
@@ -587,19 +595,23 @@ const Emprunts = () => {
                       value={ligne.quantite}
                       onChange={(event) => updateLine(ligne.materielId, event.target.value)}
                       aria-label={`Quantité ${materiel.nom}`}
+                      disabled={Boolean(editing)}
+                      readOnly={Boolean(editing)}
                     />
-                    <button
-                      type="button"
-                      className="line-editor__remove"
-                      onClick={() => removeLine(ligne.materielId)}
-                      aria-label="Retirer"
-                    >
-                      <Trash2 size={13} />
-                    </button>
+                    {!editing && (
+                      <button
+                        type="button"
+                        className="line-editor__remove"
+                        onClick={() => removeLine(ligne.materielId)}
+                        aria-label="Retirer"
+                      >
+                        <Trash2 size={13} />
+                      </button>
+                    )}
                   </div>
                 )
               })}
-              {!draft.lignes.length && (
+              {!draft.lignes.length && !editing && (
                 <div className="insight-strip">
                   <span className="insight-strip__icon">
                     <Package size={12} />

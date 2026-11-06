@@ -1,4 +1,3 @@
-
 import {
   createContext,
   useCallback,
@@ -7,680 +6,502 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { empruntsInitiaux } from '../data/emprunts'
-import { evenementsInitiaux } from '../data/evenements'
-import { materielsInitiaux } from '../data/materiels'
 import { parametresInitiaux } from '../data/parametres'
-import { rapportsInitiaux } from '../data/rapports'
-import { reservationsInitiales } from '../data/reservations'
-import { retoursInitiaux } from '../data/retours'
-import { utilisateursInitiaux } from '../data/utilisateurs'
-import { usePersistentState } from '../hooks/usePersistentState'
-import { backendApi } from '../services/backendApi'
+import { backendApi, tokenStore } from '../services/backendApi'
 import { createId } from '../services/dataService'
-import {
-  applyEmpruntToStock,
-  applyRetourToStock,
-  checkDisponibilitePeriode,
-  getLignesRestantes,
-  getStatutEmpruntCalcule,
-  isEmpruntSolde,
-  validateLignesEmprunt,
-} from '../services/stockService'
-import { daysUntil, nextReference, todayISO } from '../utils/format'
+import { getLignesRestantes, getStatutEmpruntCalcule } from '../services/stockService'
+import { todayISO } from '../utils/format'
+import { useAuth } from './AuthContext'
 
 const DataContext = createContext(null)
 
-const buildRetourReferences = (existingRetours, count) => {
-  const latest = nextReference('RET', existingRetours)
-  const year = new Date().getFullYear()
-  const base = Number(latest.match(/(\d+)$/)?.[1] || 1)
+const EMPTY_ARRAY = []
 
-  return Array.from(
-    { length: count },
-    (_, index) => `RET-${year}-${String(base + index).padStart(4, '0')}`,
-  )
+const defaultPreferences = {
+  theme: parametresInitiaux?.preferences?.theme || 'dark',
+  densite: parametresInitiaux?.preferences?.densite || 'confort',
+  animations: parametresInitiaux?.preferences?.animations ?? true,
+  raccourcis: parametresInitiaux?.preferences?.raccourcis ?? true,
 }
 
-const extractCategories = (response) => {
-  if (Array.isArray(response)) return response
-  if (Array.isArray(response?.results)) return response.results
-  if (Array.isArray(response?.data)) return response.data
+function normalizeList(payload) {
+  if (Array.isArray(payload)) return payload
+  if (payload && Array.isArray(payload.results)) return payload.results
   return []
 }
 
-export const DataProvider = ({ children }) => {
-  const [materiels, setMateriels, resetMateriels] = usePersistentState(
-    'materiels',
-    materielsInitiaux,
-  )
-
-  // Les catégories sont désormais chargées depuis l'API Django.
-  const [categories, setCategories] = useState([])
-  const [categoriesLoading, setCategoriesLoading] = useState(true)
-  const [categoriesError, setCategoriesError] = useState(null)
-
-  const [evenements, setEvenements, resetEvenements] = usePersistentState(
-    'evenements',
-    evenementsInitiaux,
-  )
-  const [emprunts, setEmprunts, resetEmprunts] = usePersistentState(
-    'emprunts',
-    empruntsInitiaux,
-  )
-  const [retours, setRetours, resetRetours] = usePersistentState(
-    'retours',
-    retoursInitiaux,
-  )
-  const [reservations, setReservations, resetReservations] = usePersistentState(
-    'reservations',
-    reservationsInitiales,
-  )
-  const [utilisateurs, setUtilisateurs, resetUtilisateurs] = usePersistentState(
-    'utilisateurs',
-    utilisateursInitiaux,
-  )
-  const [rapports, setRapports, resetRapports] = usePersistentState(
-    'rapports',
-    rapportsInitiaux,
-  )
-  const [parametres, setParametres, resetParametres] = usePersistentState(
-    'parametres',
-    parametresInitiaux,
-  )
-
-  // Chargement initial des catégories depuis PostgreSQL.
-  const loadCategories = useCallback(async () => {
-    setCategoriesLoading(true)
-    setCategoriesError(null)
-
-    try {
-      const response = await backendApi.categories.list()
-      setCategories(extractCategories(response))
-    } catch (error) {
-      setCategoriesError(
-        error?.message || 'Impossible de charger les catégories depuis le serveur.',
-      )
-    } finally {
-      setCategoriesLoading(false)
+function normalizeParametres(settingsList) {
+  const base = JSON.parse(JSON.stringify(parametresInitiaux || {}))
+  const ids = {}
+  for (const item of normalizeList(settingsList)) {
+    if (item?.section && item.valeurs && typeof item.valeurs === 'object') {
+      base[item.section] = { ...(base[item.section] || {}), ...item.valeurs }
+      ids[item.section] = item.id
     }
+  }
+  base.__ids = ids
+  return base
+}
+
+function normalizePreferences(prefsList) {
+  const items = normalizeList(prefsList)
+  const first = items[0]
+  if (!first) return { ...defaultPreferences }
+  return {
+    id: first.id,
+    theme: first.theme ?? defaultPreferences.theme,
+    densite: first.densite ?? defaultPreferences.densite,
+    animations: first.animations ?? defaultPreferences.animations,
+    raccourcis: first.raccourcis ?? defaultPreferences.raccourcis,
+  }
+}
+
+function ok(data = {}) {
+  return { ok: true, ...data }
+}
+
+function fail(error, fallback = 'Une erreur est survenue.') {
+  return { ok: false, message: error?.message || fallback }
+}
+
+export const DataProvider = ({ children }) => {
+  const { isAuthenticated, isLoading: authLoading } = useAuth()
+
+  const [categories, setCategories] = useState(EMPTY_ARRAY)
+  const [materiels, setMateriels] = useState(EMPTY_ARRAY)
+  const [evenements, setEvenements] = useState(EMPTY_ARRAY)
+  const [emprunts, setEmprunts] = useState(EMPTY_ARRAY)
+  const [reservations, setReservations] = useState(EMPTY_ARRAY)
+  const [retours, setRetours] = useState(EMPTY_ARRAY)
+  const [utilisateurs, setUtilisateurs] = useState(EMPTY_ARRAY)
+  const [rapports, setRapports] = useState(EMPTY_ARRAY)
+  const [roles, setRoles] = useState(EMPTY_ARRAY)
+  const [habilitations, setHabilitations] = useState(EMPTY_ARRAY)
+  const [preferences, setPreferences] = useState(defaultPreferences)
+  const [parametres, setParametres] = useState(() => JSON.parse(JSON.stringify(parametresInitiaux || {})))
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const loadAll = useCallback(async ({ silent = false } = {}) => {
+    if (!tokenStore.access()) {
+      setCategories(EMPTY_ARRAY)
+      setMateriels(EMPTY_ARRAY)
+      setEvenements(EMPTY_ARRAY)
+      setEmprunts(EMPTY_ARRAY)
+      setReservations(EMPTY_ARRAY)
+      setRetours(EMPTY_ARRAY)
+      setUtilisateurs(EMPTY_ARRAY)
+      setRapports(EMPTY_ARRAY)
+      setRoles(EMPTY_ARRAY)
+      setHabilitations(EMPTY_ARRAY)
+      setPreferences(defaultPreferences)
+      setParametres(JSON.parse(JSON.stringify(parametresInitiaux || {})))
+      return
+    }
+
+    if (!silent) setLoading(true)
+    setError(null)
+
+    const tasks = [
+      ['categories', backendApi.categories.list, (v) => setCategories(normalizeList(v)), false],
+      ['materiels', backendApi.materiels.list, (v) => setMateriels(normalizeList(v)), false],
+      ['evenements', backendApi.evenements.list, (v) => setEvenements(normalizeList(v)), false],
+      ['emprunts', backendApi.emprunts.list, (v) => setEmprunts(normalizeList(v)), false],
+      ['reservations', backendApi.reservations.list, (v) => setReservations(normalizeList(v)), false],
+      ['retours', backendApi.retours.list, (v) => setRetours(normalizeList(v)), false],
+      ['utilisateurs', backendApi.utilisateurs.list, (v) => setUtilisateurs(normalizeList(v)), false],
+      ['rapports', backendApi.rapports.list, (v) => setRapports(normalizeList(v)), false],
+      ['roles', backendApi.roles.list, (v) => setRoles(normalizeList(v)), true],
+      ['habilitations', backendApi.habilitations.list, (v) => setHabilitations(normalizeList(v)), true],
+      ['preferences', backendApi.preferences.list, (v) => setPreferences(normalizePreferences(v)), true],
+      ['parametres', backendApi.parametres.list, (v) => setParametres(normalizeParametres(v)), true],
+    ]
+
+    const results = await Promise.allSettled(tasks.map(([, fn]) => fn()))
+    const failures = []
+    results.forEach((result, index) => {
+      const [name, , apply, optional] = tasks[index]
+      if (result.status === 'fulfilled') apply(result.value)
+      else if (!optional) failures.push(name)
+    })
+
+    if (failures.length) setError(`Chargement partiel: ${failures.join(', ')}.`)
+    if (!silent) setLoading(false)
   }, [])
 
   useEffect(() => {
-    loadCategories()
-  }, [loadCategories])
+    if (authLoading) return
+    if (isAuthenticated || tokenStore.access()) loadAll()
+    else loadAll({ silent: true })
+  }, [authLoading, isAuthenticated, loadAll])
 
-  const addMateriel = useCallback(
-    (payload) => {
-      const materiel = { ...payload, id: createId('mat') }
-      setMateriels((current) => [materiel, ...current])
-      return materiel
-    },
-    [setMateriels],
-  )
+  const refreshAll = useCallback(() => loadAll({ silent: true }), [loadAll])
 
-  const updateMateriel = useCallback(
-    (id, payload) => {
-      setMateriels((current) =>
-        current.map((item) => (item.id === id ? { ...item, ...payload, id } : item)),
-      )
-    },
-    [setMateriels],
-  )
-
-  const deleteMateriel = useCallback(
-    (id) => {
-      const actif = emprunts.some(
-        (emprunt) =>
-          emprunt.statut !== 'Retourné' &&
-          emprunt.lignes.some((ligne) => ligne.materielId === id),
-      )
-
-      if (actif) {
-        return {
-          ok: false,
-          message:
-            'Ce matériel est engagé dans un emprunt actif. Enregistrez le retour avant suppression.',
-        }
-      }
-
-      setMateriels((current) => current.filter((item) => item.id !== id))
-      return { ok: true }
-    },
-    [emprunts, setMateriels],
-  )
-
-  // Création d'une catégorie dans PostgreSQL.
-  const addCategorie = useCallback(async (payload) => {
+  // Catégories
+  const addCategory = useCallback(async (payload) => {
     try {
-      const categorie = await backendApi.categories.create(payload)
-
-      setCategories((current) => [...current, categorie])
-
-      return { ok: true, categorie }
-    } catch (error) {
-      return {
-        ok: false,
-        message: error?.message || 'Impossible de créer cette catégorie.',
-      }
+      const created = await backendApi.categories.create(payload)
+      setCategories((current) => [...current, created])
+      return ok({ category: created, ...created })
+    } catch (e) {
+      return fail(e, "Impossible de créer la catégorie.")
     }
   }, [])
 
-  // Modification d'une catégorie dans PostgreSQL.
-  const updateCategorie = useCallback(async (id, payload) => {
+  const updateCategory = useCallback(async (id, payload) => {
     try {
-      const categorie = await backendApi.categories.update(id, payload)
-
-      setCategories((current) =>
-        current.map((item) =>
-          String(item.id) === String(id) ? categorie : item,
-        ),
-      )
-
-      return { ok: true, categorie }
-    } catch (error) {
-      return {
-        ok: false,
-        message: error?.message || 'Impossible de modifier cette catégorie.',
-      }
+      const updated = await backendApi.categories.update(id, payload)
+      setCategories((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ category: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier la catégorie.")
     }
   }, [])
 
-  // Suppression d'une catégorie dans PostgreSQL.
-  const deleteCategorie = useCallback(
-    async (id) => {
-      const count = materiels.filter(
-        (materiel) => String(materiel.categorieId) === String(id),
-      ).length
+  const deleteCategory = useCallback(async (id) => {
+    try {
+      await backendApi.categories.remove(id)
+      setCategories((current) => current.filter((item) => String(item.id) !== String(id)))
+      return ok()
+    } catch (e) {
+      return fail(e, "Impossible de supprimer la catégorie.")
+    }
+  }, [])
 
-      if (count > 0) {
-        return {
-          ok: false,
-          message: `Cette catégorie contient ${count} référence(s). Réaffectez-les avant suppression.`,
-        }
+  // Alias compatibilité (Categories.jsx utilise la forme française)
+  const addCategorie = addCategory
+  const updateCategorie = updateCategory
+  const deleteCategorie = deleteCategory
+
+  // Matériels
+  const addMateriel = useCallback(async (payload) => {
+    try {
+      const created = await backendApi.materiels.create(payload)
+      setMateriels((current) => [...current, created])
+      return ok({ materiel: created, ...created })
+    } catch (e) {
+      return fail(e, "Impossible d'ajouter le matériel.")
+    }
+  }, [])
+
+  const updateMateriel = useCallback(async (id, payload) => {
+    try {
+      const updated = await backendApi.materiels.update(id, payload)
+      setMateriels((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ materiel: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier le matériel.")
+    }
+  }, [])
+
+  const deleteMateriel = useCallback(async (id) => {
+    try {
+      await backendApi.materiels.remove(id)
+      setMateriels((current) => current.filter((item) => String(item.id) !== String(id)))
+      return ok()
+    } catch (e) {
+      return fail(e, "Impossible de supprimer le matériel.")
+    }
+  }, [])
+
+  // Événements
+  const addEvenement = useCallback(async (payload) => {
+    try {
+      const created = await backendApi.evenements.create(payload)
+      setEvenements((current) => [...current, created])
+      return ok({ evenement: created, ...created })
+    } catch (e) {
+      return fail(e, "Impossible de créer l'événement.")
+    }
+  }, [])
+
+  const updateEvenement = useCallback(async (id, payload) => {
+    try {
+      const updated = await backendApi.evenements.update(id, payload)
+      setEvenements((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ evenement: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier l'événement.")
+    }
+  }, [])
+
+  const deleteEvenement = useCallback(async (id) => {
+    try {
+      await backendApi.evenements.remove(id)
+      setEvenements((current) => current.filter((item) => String(item.id) !== String(id)))
+      return ok()
+    } catch (e) {
+      return fail(e, "Impossible de supprimer l'événement.")
+    }
+  }, [])
+
+  // Emprunts
+  const createEmprunt = useCallback(async (payload) => {
+    try {
+      const body = {
+        emprunteurId: payload.emprunteurId,
+        evenementId: payload.evenementId || null,
+        dateEmprunt: payload.dateEmprunt,
+        dateRetourPrevue: payload.dateRetourPrevue,
+        notes: payload.notes || '',
+        statut: payload.statut || 'En cours',
+        lignes: (payload.lignes || []).map((l) => ({
+          materielId: l.materielId,
+          quantite: Number(l.quantite),
+        })),
       }
+      const created = await backendApi.emprunts.create(body)
+      setEmprunts((current) => [created, ...current])
+      try { setMateriels(normalizeList(await backendApi.materiels.list())) } catch {}
+      return ok({ emprunt: created })
+    } catch (e) {
+      return fail(e, "Impossible de créer l'emprunt.")
+    }
+  }, [])
 
-      try {
-        await backendApi.categories.remove(id)
-
-        setCategories((current) =>
-          current.filter((item) => String(item.id) !== String(id)),
-        )
-
-        return { ok: true }
-      } catch (error) {
-        return {
-          ok: false,
-          message: error?.message || 'Impossible de supprimer cette catégorie.',
-        }
+  const updateEmprunt = useCallback(async (id, payload) => {
+    try {
+      // Backend: les lignes d’un emprunt existant ne sont pas modifiables.
+      const body = {
+        emprunteurId: payload.emprunteurId,
+        evenementId: payload.evenementId || null,
+        dateEmprunt: payload.dateEmprunt,
+        dateRetourPrevue: payload.dateRetourPrevue,
+        notes: payload.notes ?? '',
+        ...(payload.statut ? { statut: payload.statut } : {}),
+        ...(payload.dateRetourReelle ? { dateRetourReelle: payload.dateRetourReelle } : {}),
       }
-    },
-    [materiels],
-  )
+      const updated = await backendApi.emprunts.update(id, body)
+      setEmprunts((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ emprunt: updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier l'emprunt.")
+    }
+  }, [])
 
-  const addEvenement = useCallback(
-    (payload) => {
-      const evenement = { ...payload, id: createId('evt') }
-      setEvenements((current) => [evenement, ...current])
-      return evenement
-    },
-    [setEvenements],
-  )
-
-  const updateEvenement = useCallback(
-    (id, payload) => {
-      setEvenements((current) =>
-        current.map((item) => (item.id === id ? { ...item, ...payload, id } : item)),
-      )
-    },
-    [setEvenements],
-  )
-
-  const deleteEvenement = useCallback(
-    (id) => {
-      const lie = emprunts.some(
-        (emprunt) => emprunt.evenementId === id && emprunt.statut !== 'Retourné',
-      )
-      const reserve = reservations.some(
-        (reservation) =>
-          reservation.evenementId === id && reservation.statut !== 'Annulée',
-      )
-
-      if (lie || reserve) {
-        return {
-          ok: false,
-          message:
-            'Cet événement possède des emprunts actifs ou des réservations. Annulez-les avant suppression.',
-        }
-      }
-
-      setEvenements((current) => current.filter((item) => item.id !== id))
-      return { ok: true }
-    },
-    [emprunts, reservations, setEvenements],
-  )
-
-  const addUtilisateur = useCallback(
-    (payload) => {
-      const utilisateur = { ...payload, id: createId('usr') }
-      setUtilisateurs((current) => [utilisateur, ...current])
-      return utilisateur
-    },
-    [setUtilisateurs],
-  )
-
-  const updateUtilisateur = useCallback(
-    (id, payload) => {
-      setUtilisateurs((current) =>
-        current.map((item) => (item.id === id ? { ...item, ...payload, id } : item)),
-      )
-    },
-    [setUtilisateurs],
-  )
-
-  const deleteUtilisateur = useCallback(
-    (id) => {
-      const lie = emprunts.some(
-        (emprunt) => emprunt.emprunteurId === id && emprunt.statut !== 'Retourné',
-      )
-
-      if (lie) {
-        return {
-          ok: false,
-          message:
-            'Cet utilisateur possède un emprunt en cours et ne peut pas être supprimé.',
-        }
-      }
-
-      setUtilisateurs((current) => current.filter((item) => item.id !== id))
-      return { ok: true }
-    },
-    [emprunts, setUtilisateurs],
-  )
-
-  const createEmprunt = useCallback(
-    (payload) => {
-      if (!payload.emprunteurId) {
-        return { ok: false, message: 'Sélectionnez un emprunteur.' }
-      }
-
-      if (!payload.dateEmprunt || !payload.dateRetourPrevue) {
-        return { ok: false, message: 'Renseignez les dates de sortie et de retour.' }
-      }
-
-      if (new Date(payload.dateRetourPrevue) < new Date(payload.dateEmprunt)) {
-        return {
-          ok: false,
-          message: 'La date de retour doit suivre la date d’emprunt.',
-        }
-      }
-
-      const validation = validateLignesEmprunt(payload.lignes, materiels)
-
-      if (!validation.valid) {
-        return {
-          ok: false,
-          message: validation.errors[0],
-          errors: validation.errors,
-        }
-      }
-
-      const emprunt = {
-        ...payload,
-        id: createId('emp'),
-        reference: nextReference('EMP', emprunts),
-        dateRetourReelle: null,
-        statut: daysUntil(payload.dateRetourPrevue) < 0 ? 'En retard' : 'En cours',
-      }
-
-      setMateriels((current) => applyEmpruntToStock(current, payload.lignes))
-      setEmprunts((current) => [emprunt, ...current])
-
-      return { ok: true, emprunt }
-    },
-    [emprunts, materiels, setEmprunts, setMateriels],
-  )
-
-  const updateEmprunt = useCallback(
-    (id, payload) => {
-      const emprunt = emprunts.find((item) => item.id === id)
-
-      if (!emprunt) {
-        return { ok: false, message: 'Emprunt introuvable.' }
-      }
-
-      const stockRestitue = applyRetourToStock(materiels, emprunt.lignes)
-      const validation = validateLignesEmprunt(payload.lignes, stockRestitue)
-
-      if (!validation.valid) {
-        return {
-          ok: false,
-          message: validation.errors[0],
-          errors: validation.errors,
-        }
-      }
-
-      setMateriels((current) => {
-        const restored = applyRetourToStock(current, emprunt.lignes)
-        return applyEmpruntToStock(restored, payload.lignes)
+  // Retours (enregistrés via /emprunts/{id}/retours/)
+  const processRetour = useCallback(async (payload) => {
+    try {
+      const result = await backendApi.emprunts.retour(payload.empruntId, {
+        lignes: (payload.lignes || []).map((l) => ({
+          materielId: l.materielId,
+          quantite: Number(l.quantite),
+          etat: l.etat || 'Bon état',
+          commentaire: l.commentaire || '',
+          dateRetour: l.dateRetour || todayISO(),
+        })),
       })
+      const [nextEmprunts, nextRetours, nextMateriels] = await Promise.all([
+        backendApi.emprunts.list().catch(() => null),
+        backendApi.retours.list().catch(() => null),
+        backendApi.materiels.list().catch(() => null),
+      ])
+      if (nextEmprunts) setEmprunts(normalizeList(nextEmprunts))
+      if (nextRetours) setRetours(normalizeList(nextRetours))
+      if (nextMateriels) setMateriels(normalizeList(nextMateriels))
+      return ok({ complete: result?.statut === 'Retourné', statut: result?.statut, retourIds: result?.retourIds || [] })
+    } catch (e) {
+      return fail(e, "Impossible d'enregistrer le retour.")
+    }
+  }, [])
 
-      setEmprunts((current) =>
-        current.map((item) =>
-          item.id === id
-            ? {
-                ...item,
-                ...payload,
-                id,
-                statut: getStatutEmpruntCalcule({ ...item, ...payload }),
-              }
-            : item,
-        ),
-      )
-
-      return { ok: true }
-    },
-    [emprunts, materiels, setEmprunts, setMateriels],
-  )
-
-  const processRetour = useCallback(
-    ({ empruntId, lignes = [], inspecteur }) => {
-      const emprunt = emprunts.find((item) => item.id === empruntId)
-
-      if (!emprunt) {
-        return { ok: false, message: 'Emprunt introuvable.' }
+  // Réservations
+  const addReservation = useCallback(async (payload) => {
+    try {
+      const body = { ...payload }
+      if (body.materielIds && !body.lignes) {
+        body.lignes = body.materielIds.map((id) => ({ materielId: id, quantite: 1 }))
       }
+      const created = await backendApi.reservations.create(body)
+      setReservations((current) => [created, ...current])
+      return ok({ reservation: created, ...created })
+    } catch (e) {
+      return fail(e, "Impossible de créer la réservation.")
+    }
+  }, [])
 
-      const restantes = getLignesRestantes(emprunt, retours)
-
-      const valides = lignes
-        .map((ligne) => {
-          const restante = restantes.find(
-            (item) => item.materielId === ligne.materielId,
-          )
-
-          if (!restante) return null
-
-          const quantite = Math.min(
-            Number(ligne.quantite) || 0,
-            restante.quantiteRestante,
-          )
-
-          if (quantite <= 0) return null
-
-          return {
-            materielId: ligne.materielId,
-            quantite,
-            etat: ligne.etat || 'Bon état',
-            commentaire: ligne.commentaire || '',
-          }
-        })
-        .filter(Boolean)
-
-      if (!valides.length) {
-        return { ok: false, message: 'Aucune quantité valide à restituer.' }
+  const updateReservation = useCallback(async (id, payload) => {
+    try {
+      const body = { ...payload }
+      if (body.materielIds && !body.lignes) {
+        body.lignes = body.materielIds.map((mid) => ({ materielId: mid, quantite: 1 }))
       }
+      const updated = await backendApi.reservations.update(id, body)
+      setReservations((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ reservation: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier la réservation.")
+    }
+  }, [])
 
-      const references = buildRetourReferences(retours, valides.length)
+  const cancelReservation = useCallback(async (id) => {
+    try {
+      const updated = await backendApi.reservations.annuler(id)
+      setReservations((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ reservation: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible d'annuler la réservation.")
+    }
+  }, [])
 
-      const nouveauxRetours = valides.map((ligne, index) => ({
-        id: createId('ret'),
-        empruntId,
-        reference: references[index],
-        emprunteurId: emprunt.emprunteurId,
-        materielId: ligne.materielId,
-        quantite: ligne.quantite,
-        dateRetour: todayISO(),
-        etat: ligne.etat,
-        commentaire: ligne.commentaire,
-        inspecteur: inspecteur || 'Alexandre Mercier',
-      }))
+  const deleteReservation = useCallback(async (id) => {
+    try {
+      await backendApi.reservations.remove(id)
+      setReservations((current) => current.filter((item) => String(item.id) !== String(id)))
+      return ok()
+    } catch (e) {
+      return fail(e, "Les réservations sont conservées pour audit et ne peuvent pas être supprimées.")
+    }
+  }, [])
 
-      const tousLesRetours = [...retours, ...nouveauxRetours]
-      const complet = isEmpruntSolde(emprunt, tousLesRetours)
+  // Utilisateurs
+  const addUtilisateur = useCallback(async (payload) => {
+    try {
+      const created = await backendApi.utilisateurs.create(payload)
+      setUtilisateurs((current) => [...current, created])
+      return created
+    } catch (e) {
+      return { ok: false, message: e?.message || "Impossible de créer l'utilisateur." }
+    }
+  }, [])
 
-      setRetours((current) => [...nouveauxRetours, ...current])
-      setMateriels((current) => applyRetourToStock(current, valides))
+  const updateUtilisateur = useCallback(async (id, payload) => {
+    try {
+      const updated = await backendApi.utilisateurs.update(id, payload)
+      setUtilisateurs((current) => current.map((item) => (String(item.id) === String(id) ? updated : item)))
+      return ok({ utilisateur: updated, ...updated })
+    } catch (e) {
+      return fail(e, "Impossible de modifier l'utilisateur.")
+    }
+  }, [])
 
-      setEmprunts((current) =>
-        current.map((item) =>
-          item.id === empruntId
-            ? {
-                ...item,
-                statut: complet ? 'Retourné' : getStatutEmpruntCalcule(item),
-                dateRetourReelle: complet ? todayISO() : item.dateRetourReelle,
-              }
-            : item,
-        ),
-      )
+  const deleteUtilisateur = useCallback(async (id) => {
+    try {
+      await backendApi.utilisateurs.remove(id)
+      setUtilisateurs((current) => current.map((item) => (
+        String(item.id) === String(id) ? { ...item, statut: 'Inactif', is_active: false } : item
+      )))
+      return ok()
+    } catch (e) {
+      return fail(e, "Impossible de supprimer l'utilisateur.")
+    }
+  }, [])
 
-      return { ok: true, complete: complet, retours: nouveauxRetours }
-    },
-    [emprunts, retours, setEmprunts, setMateriels, setRetours],
-  )
-
-  const addReservation = useCallback(
-    (payload) => {
-      if (!payload.materielIds?.length) {
-        return { ok: false, message: 'Sélectionnez au moins un matériel.' }
+  // Rapports
+  const addRapport = useCallback(async (payload) => {
+    try {
+      const body = {
+        titre: payload.titre,
+        type: payload.type || 'Général',
+        format: payload.format || 'PDF',
+        date: payload.date || todayISO(),
+        taille_octets: payload.taille_octets ?? 0,
+        auteurNom: payload.auteur || payload.auteurNom || 'Système',
       }
+      const created = await backendApi.rapports.create(body)
+      setRapports((current) => [created, ...current])
+      return created
+    } catch (e) {
+      const local = { ...body, id: createId('rpt'), dateCreation: new Date().toISOString() }
+      setRapports((current) => [local, ...current])
+      return local
+    }
+  }, [])
 
-      if (new Date(payload.dateFin) < new Date(payload.dateDebut)) {
-        return {
-          ok: false,
-          message: 'La date de fin doit suivre la date de début.',
-        }
+  const deleteRapport = useCallback(async (id) => {
+    try {
+      await backendApi.rapports.remove(id)
+      setRapports((current) => current.filter((item) => String(item.id) !== String(id)))
+      return ok()
+    } catch (e) {
+      return fail(e, "Les rapports sont conservés dans l'historique.")
+    }
+  }, [])
+
+  // Paramètres / préférences
+  const updateParametres = useCallback(async (section, patch) => {
+    let nextValues = {}
+    setParametres((current) => {
+      nextValues = { ...(current[section] || {}), ...patch }
+      return { ...current, [section]: nextValues }
+    })
+    try {
+      const existingId = parametres?.__ids?.[section]
+      const valeurs = { ...(parametres?.[section] || {}), ...patch }
+      if (existingId) await backendApi.parametres.update(existingId, { section, valeurs })
+      else {
+        const created = await backendApi.parametres.create({ section, valeurs })
+        if (created?.id) setParametres((c) => ({ ...c, __ids: { ...(c.__ids || {}), [section]: created.id } }))
       }
+    } catch {}
+    return ok()
+  }, [parametres])
 
-      const conflit = checkDisponibilitePeriode({
-        materielIds: payload.materielIds,
-        dateDebut: payload.dateDebut,
-        dateFin: payload.dateFin,
-        reservations,
-        emprunts,
-      })
-
-      if (!conflit.disponible) {
-        return {
-          ok: false,
-          message: `Conflit de disponibilité détecté (${conflit.totalConflits}). Choisissez une autre période.`,
-        }
+  const updatePreferences = useCallback(async (patch) => {
+    const next = { ...preferences, ...patch }
+    setPreferences(next)
+    try {
+      if (preferences?.id) await backendApi.preferences.update(preferences.id, next)
+      else {
+        const created = await backendApi.preferences.create(next)
+        if (created?.id) setPreferences((c) => ({ ...c, id: created.id }))
       }
+    } catch {}
+    return ok()
+  }, [preferences])
 
-      const reservation = {
-        ...payload,
-        id: createId('res'),
-        reference: nextReference('RES', reservations),
-        statut: payload.statut || 'En attente',
-      }
+  const resetDonnees = useCallback(async () => {
+    await loadAll({ silent: true })
+    return ok({ message: 'Données rechargées depuis le serveur.' })
+  }, [loadAll])
 
-      setReservations((current) => [reservation, ...current])
-
-      return { ok: true, reservation }
-    },
-    [emprunts, reservations, setReservations],
-  )
-
-  const updateReservation = useCallback(
-    (id, payload) => {
-      if (!payload.materielIds?.length) {
-        return { ok: false, message: 'Sélectionnez au moins un matériel.' }
-      }
-
-      const conflit = checkDisponibilitePeriode({
-        materielIds: payload.materielIds,
-        dateDebut: payload.dateDebut,
-        dateFin: payload.dateFin,
-        reservations,
-        emprunts,
-        excludeReservationId: id,
-      })
-
-      if (!conflit.disponible) {
-        return {
-          ok: false,
-          message: `Conflit de disponibilité détecté (${conflit.totalConflits}). Choisissez une autre période.`,
-        }
-      }
-
-      setReservations((current) =>
-        current.map((item) => (item.id === id ? { ...item, ...payload, id } : item)),
-      )
-
-      return { ok: true }
-    },
-    [emprunts, reservations, setReservations],
-  )
-
-  const cancelReservation = useCallback(
-    (id) => {
-      setReservations((current) =>
-        current.map((item) =>
-          item.id === id ? { ...item, statut: 'Annulée' } : item,
-        ),
-      )
-
-      return { ok: true }
-    },
-    [setReservations],
-  )
-
-  const deleteReservation = useCallback(
-    (id) => {
-      setReservations((current) => current.filter((item) => item.id !== id))
-      return { ok: true }
-    },
-    [setReservations],
-  )
-
-  const addRapport = useCallback(
-    (payload) => {
-      const rapport = { ...payload, id: createId('rap') }
-      setRapports((current) => [rapport, ...current])
-      return rapport
-    },
-    [setRapports],
-  )
-
-  const deleteRapport = useCallback(
-    (id) => {
-      setRapports((current) => current.filter((item) => item.id !== id))
-    },
-    [setRapports],
-  )
-
-  const updateParametres = useCallback(
-    (section, values) => {
-      setParametres((current) => ({
-        ...current,
-        [section]: Array.isArray(values)
-          ? values
-          : typeof values === 'object' && values !== null
-            ? { ...(current[section] || {}), ...values }
-            : values,
-      }))
-    },
-    [setParametres],
-  )
-
-  const resetDonnees = useCallback(() => {
-    resetMateriels()
-    resetEvenements()
-    resetEmprunts()
-    resetRetours()
-    resetReservations()
-    resetUtilisateurs()
-    resetRapports()
-    resetParametres()
-
-    // Les catégories sont conservées dans PostgreSQL.
-    loadCategories()
-  }, [
-    resetMateriels,
-    resetEvenements,
-    resetEmprunts,
-    resetRetours,
-    resetReservations,
-    resetUtilisateurs,
-    resetRapports,
-    resetParametres,
-    loadCategories,
-  ])
+  // Selecteurs compatibilité
+  const findById = (list, id) => list.find((item) => String(item.id) === String(id))
+  const getMateriel = useCallback((id) => findById(materiels, id), [materiels])
+  const getUtilisateur = useCallback((id) => findById(utilisateurs, id), [utilisateurs])
+  const getEvenement = useCallback((id) => findById(evenements, id), [evenements])
+  const getCategorie = useCallback((id) => findById(categories, id), [categories])
+  const getReservation = useCallback((id) => findById(reservations, id), [reservations])
+  const getEmprunt = useCallback((id) => findById(emprunts, id), [emprunts])
+  const getStatutEmprunt = useCallback((id) => {
+    const e = findById(emprunts, id)
+    return e ? getStatutEmpruntCalcule(e) : 'Inconnu'
+  }, [emprunts])
+  const getLignesRestantesEmprunt = useCallback((id) => {
+    const e = findById(emprunts, id)
+    return e ? getLignesRestantes(e, retours) : []
+  }, [emprunts, retours])
 
   const value = useMemo(
     () => ({
-      materiels,
-      categories,
-      categoriesLoading,
-      categoriesError,
-      loadCategories,
-      evenements,
-      emprunts,
-      retours,
-      reservations,
-      utilisateurs,
-      rapports,
-      parametres,
-      addMateriel,
-      updateMateriel,
-      deleteMateriel,
-      addCategorie,
-      updateCategorie,
-      deleteCategorie,
-      addEvenement,
-      updateEvenement,
-      deleteEvenement,
-      addUtilisateur,
-      updateUtilisateur,
-      deleteUtilisateur,
-      createEmprunt,
-      updateEmprunt,
-      processRetour,
-      addReservation,
-      updateReservation,
-      cancelReservation,
-      deleteReservation,
-      addRapport,
-      deleteRapport,
-      updateParametres,
-      resetDonnees,
+      categories, materiels, evenements, emprunts, reservations, retours,
+      utilisateurs, rapports, roles, habilitations, preferences, parametres,
+      loading, error, refreshAll, loadAll,
+      addCategory, updateCategory, deleteCategory,
+      addMateriel, updateMateriel, deleteMateriel,
+      addEvenement, updateEvenement, deleteEvenement,
+      createEmprunt, updateEmprunt, processRetour,
+      addReservation, updateReservation, cancelReservation, deleteReservation,
+      addUtilisateur, updateUtilisateur, deleteUtilisateur,
+      addRapport, deleteRapport,
+      updateParametres, updatePreferences, resetDonnees,
+      getMateriel, getUtilisateur, getEvenement, getCategorie, getReservation, getEmprunt,
+      getStatutEmprunt, getLignesRestantesEmprunt,
     }),
     [
-      materiels,
-      categories,
-      categoriesLoading,
-      categoriesError,
-      loadCategories,
-      evenements,
-      emprunts,
-      retours,
-      reservations,
-      utilisateurs,
-      rapports,
-      parametres,
-      addMateriel,
-      updateMateriel,
-      deleteMateriel,
-      addCategorie,
-      updateCategorie,
-      deleteCategorie,
-      addEvenement,
-      updateEvenement,
-      deleteEvenement,
-      addUtilisateur,
-      updateUtilisateur,
-      deleteUtilisateur,
-      createEmprunt,
-      updateEmprunt,
-      processRetour,
-      addReservation,
-      updateReservation,
-      cancelReservation,
-      deleteReservation,
-      addRapport,
-      deleteRapport,
-      updateParametres,
-      resetDonnees,
+      categories, materiels, evenements, emprunts, reservations, retours,
+      utilisateurs, rapports, roles, habilitations, preferences, parametres,
+      loading, error, refreshAll, loadAll,
+      addCategory, updateCategory, deleteCategory,
+      addMateriel, updateMateriel, deleteMateriel,
+      addEvenement, updateEvenement, deleteEvenement,
+      createEmprunt, updateEmprunt, processRetour,
+      addReservation, updateReservation, cancelReservation, deleteReservation,
+      addUtilisateur, updateUtilisateur, deleteUtilisateur,
+      addRapport, deleteRapport,
+      updateParametres, updatePreferences, resetDonnees,
+      getMateriel, getUtilisateur, getEvenement, getCategorie, getReservation, getEmprunt,
+      getStatutEmprunt, getLignesRestantesEmprunt,
     ],
   )
 
@@ -689,10 +510,6 @@ export const DataProvider = ({ children }) => {
 
 export const useData = () => {
   const context = useContext(DataContext)
-
-  if (!context) {
-    throw new Error('useData doit être utilisé dans DataProvider')
-  }
-
+  if (!context) throw new Error('useData doit être utilisé dans DataProvider')
   return context
 }

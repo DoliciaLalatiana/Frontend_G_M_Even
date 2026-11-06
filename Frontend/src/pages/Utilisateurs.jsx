@@ -211,7 +211,7 @@ const Utilisateurs = () => {
     })
   }
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const next = {}
     if (!draft.nom.trim()) next.nom = 'Le nom complet est requis.'
@@ -242,11 +242,19 @@ const Utilisateurs = () => {
     }
 
     if (editing) {
-      updateUtilisateur(editing.id, payload)
+      const result = await updateUtilisateur(editing.id, payload)
+      if (result?.ok === false) {
+        pushToast({ title: 'Mise à jour impossible', message: result.message, type: 'error' })
+        return
+      }
       pushToast({ title: 'Compte mis à jour', message: `${payload.nom} dispose désormais du rôle ${payload.role}.` })
     } else {
-      const created = addUtilisateur(payload)
-      setSelectedId(created.id)
+      const created = await addUtilisateur(payload)
+      if (created?.ok === false) {
+        pushToast({ title: 'Création impossible', message: created.message, type: 'error' })
+        return
+      }
+      if (created?.id) setSelectedId(created.id)
       pushToast({ title: 'Utilisateur ajouté', message: `${payload.nom} rejoint le registre des accréditations.` })
     }
     setFormOpen(false)
@@ -263,9 +271,9 @@ const Utilisateurs = () => {
       tone: 'danger',
     })
     if (!ok) return
-    const result = deleteUtilisateur(utilisateur.id)
-    if (!result.ok) {
-      pushToast({ title: 'Suppression impossible', message: result.message, type: 'error' })
+    const result = await deleteUtilisateur(utilisateur.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Suppression impossible', message: result?.message, type: 'error' })
       return
     }
     setDetail(null)
@@ -284,13 +292,17 @@ const Utilisateurs = () => {
     })
   }
 
-  const saveRights = () => {
+  const saveRights = async () => {
     if (!selected) return
-    updateUtilisateur(selected.id, {
+    const result = await updateUtilisateur(selected.id, {
       role: rightsDraft.role,
       statut: rightsDraft.statut,
       habilitations: rightsDraft.habilitations,
     })
+    if (result?.ok === false) {
+      pushToast({ title: 'Enregistrement impossible', message: result.message, type: 'error' })
+      return
+    }
     pushToast({
       title: 'Droits enregistrés',
       message: `Les accès de ${selected.nom} ont été actualisés.`,
@@ -306,8 +318,12 @@ const Utilisateurs = () => {
       tone: 'danger',
     })
     if (!ok) return
+    const result = await updateUtilisateur(selected.id, { habilitations: [] })
+    if (result?.ok === false) {
+      pushToast({ title: 'Révocation impossible', message: result.message, type: 'error' })
+      return
+    }
     setRightsDraft((current) => ({ ...current, habilitations: [] }))
-    updateUtilisateur(selected.id, { habilitations: [] })
     pushToast({ title: 'Habilitations révoquées', message: `${selected.nom} n’a plus d’accès dépôt.`, type: 'warning' })
   }
 

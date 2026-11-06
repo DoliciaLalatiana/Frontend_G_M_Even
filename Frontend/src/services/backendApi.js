@@ -193,8 +193,6 @@ export const backendApi = {
       apiRequest('/auth/password/', json('POST', body)),
   },
 
-  dashboard: () => apiRequest('/dashboard/'),
-
   categories: {
     list: () => apiRequest('/categories/'),
 
@@ -248,6 +246,9 @@ export const backendApi = {
 
     retour: (id, body) =>
       apiRequest(`/emprunts/${id}/retours/`, json('POST', body)),
+
+    recordRetour: (id, body) =>
+      apiRequest(`/emprunts/${id}/retours/`, json('POST', body)),
   },
 
   reservations: {
@@ -259,6 +260,9 @@ export const backendApi = {
 
     update: (id, body) =>
       apiRequest(`/reservations/${id}/`, json('PATCH', body)),
+
+    remove: (id) =>
+      apiRequest(`/reservations/${id}/`, { method: 'DELETE' }),
 
     annuler: (id) =>
       apiRequest(`/reservations/${id}/annuler/`, json('POST', {})),
@@ -289,6 +293,12 @@ export const backendApi = {
 
     create: (body) =>
       apiRequest('/rapports/', json('POST', body)),
+
+    update: (id, body) =>
+      apiRequest(`/rapports/${id}/`, json('PATCH', body)),
+
+    remove: (id) =>
+      apiRequest(`/rapports/${id}/`, { method: 'DELETE' }),
   },
 
   roles: {
@@ -305,6 +315,12 @@ export const backendApi = {
     list: () =>
       apiRequest('/preferences/'),
 
+    create: (body) =>
+      apiRequest('/preferences/', json('POST', body)),
+
+    update: (id, body) =>
+      apiRequest(`/preferences/${id}/`, json('PATCH', body)),
+
     save: (body) =>
       apiRequest('/preferences/', json('POST', body)),
   },
@@ -313,7 +329,18 @@ export const backendApi = {
     list: () =>
       apiRequest('/parametres/'),
 
+    create: (body) =>
+      apiRequest('/parametres/', json('POST', body)),
+
+    update: (id, body) =>
+      apiRequest(`/parametres/${id}/`, json('PATCH', body)),
+
     save: (body) =>
       apiRequest('/parametres/', json('POST', body)),
+  },
+
+  dashboard: {
+    get: () =>
+      apiRequest('/dashboard/'),
   },
 }

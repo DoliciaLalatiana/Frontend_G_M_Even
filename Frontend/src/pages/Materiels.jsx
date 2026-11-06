@@ -206,7 +206,7 @@ const Materiels = () => {
     return Object.keys(next).length === 0
   }
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     if (!validate()) return
     const payload = {
@@ -220,11 +220,14 @@ const Materiels = () => {
       valeur: Number(draft.valeur) || 0,
       notes: draft.notes.trim(),
     }
+    const result = editing ? await updateMateriel(editing.id, payload) : await addMateriel(payload)
+    if (result?.ok === false) {
+      pushToast({ title: 'Enregistrement impossible', message: result.message, type: 'error' })
+      return
+    }
     if (editing) {
-      updateMateriel(editing.id, payload)
       pushToast({ title: 'Matériel mis à jour', message: `${payload.nom} a été enregistré.` })
     } else {
-      addMateriel(payload)
       pushToast({ title: 'Matériel créé', message: `${payload.nom} rejoint l’inventaire.` })
     }
     setFormOpen(false)
@@ -238,9 +241,9 @@ const Materiels = () => {
       confirmLabel: 'Supprimer',
     })
     if (!ok) return
-    const result = deleteMateriel(materiel.id)
-    if (!result.ok) {
-      pushToast({ title: 'Suppression impossible', message: result.message, type: 'error' })
+    const result = await deleteMateriel(materiel.id)
+    if (!result?.ok) {
+      pushToast({ title: 'Suppression impossible', message: result?.message, type: 'error' })
       return
     }
     setDetail(null)

@@ -218,7 +218,7 @@ const Retours = () => {
     : 0
   const totalPointe = lignesACloturer.reduce((sum, ligne) => sum + ligne.quantite, 0)
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     if (!selectedEmprunt) {
       pushToast({ title: 'Aucun bon sélectionné', message: 'Choisissez un bon d’emprunt à réceptionner.', type: 'warning' })
@@ -233,7 +233,7 @@ const Retours = () => {
       return
     }
 
-    const result = processRetour({
+    const result = await processRetour({
       empruntId: selectedEmprunt.id,
       lignes: lignesACloturer.map((ligne) => ({
         materielId: ligne.materielId,
@@ -244,8 +244,8 @@ const Retours = () => {
       inspecteur,
     })
 
-    if (!result.ok) {
-      pushToast({ title: 'Réception impossible', message: result.message, type: 'error' })
+    if (!result?.ok) {
+      pushToast({ title: 'Réception impossible', message: result?.message || 'Erreur serveur.', type: 'error' })
       return
     }
 

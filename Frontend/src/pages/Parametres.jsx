@@ -209,8 +209,12 @@ const Parametres = () => {
     setAuditLog((current) => [entry, ...current].slice(0, 16))
   }
 
-  const saveSettings = () => {
-    Object.entries(draft).forEach(([section, values]) => updateParametres(section, values))
+  const saveSettings = async () => {
+    await Promise.all(
+      Object.entries(draft)
+        .filter(([section]) => section !== '__ids')
+        .map(([section, values]) => updateParametres(section, values)),
+    )
     registerAudit(
       'Enregistrement des paramètres système',
       `Configuration ${draft.organisation.nom} mise à jour depuis l'onglet « ${
@@ -302,7 +306,9 @@ const Parametres = () => {
       tone: 'warning',
     })
     if (!confirmed) return
-    Object.entries(parametresInitiaux).forEach(([section, values]) => updateParametres(section, values))
+    await Promise.all(
+      Object.entries(parametresInitiaux).map(([section, values]) => updateParametres(section, values)),
+    )
     setDraft(hydrateSettings(parametresInitiaux))
     registerAudit('Réinitialisation des paramètres', 'Configuration système restaurée aux valeurs d’usine.')
     pushToast('Paramètres réinitialisés')
@@ -312,16 +318,17 @@ const Parametres = () => {
     const confirmed = await confirm({
       title: 'Réinitialiser toutes les données ?',
       message:
-        'Inventaire, événements, emprunts, retours, réservations, utilisateurs et rapports seront restaurés aux données de démonstration. Cette action est irréversible.',
-      confirmLabel: 'Tout réinitialiser',
+        'Les données affichées seront rechargées depuis le serveur. Cette action ne supprime pas les données de la base.',
+      confirmLabel: 'Recharger',
+      tone: 'warning',
     })
     if (!confirmed) return
-    resetDonnees()
+    await resetDonnees()
     setDraft(hydrateSettings(parametresInitiaux))
-    registerAudit('Réinitialisation complète du parc', 'Toutes les données locales ont été restaurées.')
+    registerAudit('Rechargement des données', 'Les données ont été rechargées depuis le serveur.')
     pushToast({
-      title: 'Données réinitialisées',
-      message: 'Le parc et les paramètres ont retrouvé leur état initial.',
+      title: 'Données rechargées',
+      message: 'Les informations proviennent maintenant du serveur.',
       type: 'warning',
     })
   }
